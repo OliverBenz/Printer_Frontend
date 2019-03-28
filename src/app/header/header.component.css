@@ -1,0 +1,13 @@
+#background{
+    background-image: url("../../assets/images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+    
+    color: white;
+    overflow: hidden;
+    display: block;
+    height: 500px;
+    margin-bottom: 50px;
+    /* width: 100%; */
+}

@@ -1,0 +1,18 @@
+<table id="history">
+  <tr>
+    <th>Name</th>
+    <th>Length</th>
+    <th>Weight</th>
+    <th>Price</th>
+    <th>Time</th>
+    <th>Time Real</th>
+  </tr>
+  <tr *ngFor="let h of history" id="{{ h.getId() }}">
+    <td>{{ h.getName() }}</td>
+    <td>{{ h.getLength() }}</td>
+    <td>{{ h.getWeight() }}</td>
+    <td>{{ h.getPrice() }}</td>
+    <td>{{ h.getTime() }}</td>
+    <td>{{ h.getTimeReal() }}</td>
+  </tr>
+</table>
