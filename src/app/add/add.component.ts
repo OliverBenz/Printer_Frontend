@@ -32,9 +32,13 @@ export class AddComponent implements OnInit {
 
   public checkFilename(filename){
     if((filename.split("_").length - 1) == 4){
-      // Name-Name_TimeInFuckedUp_MeterW/Comma_Weight_PriceW/Comma
-
-      // TODO: Split string and set values
+      let obj = filename.split("_");
+      
+      (<HTMLInputElement>document.getElementById("name")).value = obj[0].replace(/-/g, " ");
+      (<HTMLInputElement>document.getElementById("time")).value = this.formatTime(obj[1]);
+      (<HTMLInputElement>document.getElementById("length")).value = obj[2].replace(",", ".");
+      (<HTMLInputElement>document.getElementById("weight")).value = obj[3].replace(",", ".");
+      (<HTMLInputElement>document.getElementById("price")).value = obj[4].replace(",", ".");
     }
   }
 
@@ -58,7 +62,21 @@ export class AddComponent implements OnInit {
     let print: Print = new Print(usrid, +amount, new Date(date), new Date(date_until), filename, name, +time, +length, +weight, +price);
     console.log(print);
     // this.printsService.postPrint(print);
+
+    this.clearInput();
   }
-  // TODO: Round two decimal places
   // TODO: Clear input fields after successful submit
+
+  private formatTime(str){
+      // Split XXhYYmin into X.YY
+      var time = str.split("h");
+      time[1] = (time[1].split("min"))[0];
+      // "+" to cast from string to int
+      time =  +time[0] + (((time[1] / 100) / 60) * 100);
+
+    return time;
+  }
+  private clearInput(){
+    (<HTMLFormElement>document.getElementById('printForm')).reset();
+  }
 }
