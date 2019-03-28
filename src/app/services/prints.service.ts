@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class HistoryService {
+export class PrintsService {
   // Article Normal
   private historySource = new BehaviorSubject<any>("");
   history = this.historySource.asObservable();
@@ -25,6 +25,7 @@ export class HistoryService {
 
   public getHistory(){
     let url = "http://127.0.0.1:5000/prints";
+
     this.http.get<any>(url, httpOptions).subscribe(data => {
       var historyList: Array<History> = [];
       console.log(data);
@@ -35,7 +36,16 @@ export class HistoryService {
       }
       this.historySource.next(historyList);
     })
+  }
 
-    return;
+  public postPrint(obj){
+    let url = "http://127.0.0.1:5000/add";
+
+    // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
+    let body = JSON.parse('{"usrid": ' + obj.getUsrid() + ', "amount": ' + obj.getAmount() + ', "date": ' + obj.getDate() + ', "date_until": ' + obj.getDateUntil() + ', "filename": ' + obj.getFilename() + ', "name": ' + obj.getName() + ', "time": ' + obj.getTime() + ', "length": ' + obj.getLength() + ', "weight": ' + obj.getWeight() + ', "price": ' + obj.getPrice() + '}');
+    
+    this.http.post(url, body).subscribe(resp => {
+      console.log(resp);
+    });
   }
 }

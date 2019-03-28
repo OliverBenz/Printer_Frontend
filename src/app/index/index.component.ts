@@ -1,5 +1,5 @@
 import { History } from './../classes/history';
-import { HistoryService } from './../services/history.service';
+import { PrintsService } from './../services/prints.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,15 +12,15 @@ export class IndexComponent implements OnInit {
   public history: Array<History> = [];
 
   constructor(
-    private historyService: HistoryService
+    private printsService: PrintsService
   ) { }
 
   ngOnInit() {
-    this.historyService.getHistory();
+    this.printsService.getHistory();
 
-    this.historyService.history.subscribe(data => {
+    this.printsService.history.subscribe(data => {
       this.history = data;
-    })
+    });
   }
 
 }
