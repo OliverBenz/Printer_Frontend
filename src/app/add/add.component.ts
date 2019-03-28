@@ -11,7 +11,6 @@ export class AddComponent implements OnInit {
   // TODO: Get users from database;
   // usrid, amount, date, date_until, filename, name, time, length, weight, price
   public inputList = [
-    ["Filename", "filename", "string"],
     ["Amount", "amount", "number"],
     ["Date", "date", "Date"],
     ["Date Until", "date_until", "Date"],
@@ -30,6 +29,15 @@ export class AddComponent implements OnInit {
     // TODO: If filename is right format: Auto fill out other fields
   }
 
+
+  public checkFilename(filename){
+    if((filename.split("_").length - 1) == 4){
+      // Name-Name_TimeInFuckedUp_MeterW/Comma_Weight_PriceW/Comma
+
+      // TODO: Split string and set values
+    }
+  }
+
   public submit(){
     // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
     var amount = (<HTMLInputElement>document.getElementById("amount")).value;
@@ -46,10 +54,11 @@ export class AddComponent implements OnInit {
     let usrid: number = 0;
 
     // "+" is to cast string to number
-    // 
+    // new Date to cast string to Date
     let print: Print = new Print(usrid, +amount, new Date(date), new Date(date_until), filename, name, +time, +length, +weight, +price);
     console.log(print);
     // this.printsService.postPrint(print);
   }
-
+  // TODO: Round two decimal places
+  // TODO: Clear input fields after successful submit
 }
