@@ -24,7 +24,7 @@ export class PrintsService {
   ) { }
 
   public getHistory(){
-    let url = "http://127.0.0.1:5000/prints";
+    let url = "http://127.0.0.1:5000/queue/To-Do";
 
     this.http.get<any>(url, httpOptions).subscribe(data => {
       var historyList: Array<History> = [];
@@ -42,10 +42,14 @@ export class PrintsService {
     let url = "http://127.0.0.1:5000/add";
 
     // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
-    let body = JSON.parse('{"usrid": ' + obj.getUsrid() + ', "amount": ' + obj.getAmount() + ', "date": ' + obj.getDate() + ', "date_until": ' + obj.getDateUntil() + ', "filename": ' + obj.getFilename() + ', "name": ' + obj.getName() + ', "time": ' + obj.getTime() + ', "length": ' + obj.getLength() + ', "weight": ' + obj.getWeight() + ', "price": ' + obj.getPrice() + '}');
-    
-    this.http.post(url, body).subscribe(resp => {
+    let body = JSON.parse('{"usrid": "' + obj.getUsrid() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '"}');
+    console.log(body);
+    this.http.post(url, httpOptions, body).subscribe(resp => {
+      console.log("Success");
       console.log(resp);
-    });
+    }), error => {
+      console.log("Error");
+      console.log(error);
+    };
   }
 }

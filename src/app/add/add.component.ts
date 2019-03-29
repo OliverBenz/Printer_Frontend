@@ -25,10 +25,7 @@ export class AddComponent implements OnInit {
     private printsService: PrintsService
   ) { }
 
-  ngOnInit() {
-    // TODO: If filename is right format: Auto fill out other fields
-  }
-
+  ngOnInit() { }
 
   public checkFilename(filename){
     if((filename.split("_").length - 1) == 4){
@@ -43,6 +40,7 @@ export class AddComponent implements OnInit {
   }
 
   public submit(){
+    // TODO: Current Date - remove input field
     // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
     var amount = (<HTMLInputElement>document.getElementById("amount")).value;
     var date = (<HTMLInputElement>document.getElementById("date")).value;
@@ -54,24 +52,24 @@ export class AddComponent implements OnInit {
     var weight = (<HTMLInputElement>document.getElementById("weight")).value;
     var price = (<HTMLInputElement>document.getElementById("price")).value;
 
-    // TODO: Get user-id from cookie
+    // TODO: Format Date
+
+
     let usrid: number = 0;
 
     // "+" is to cast string to number
     // new Date to cast string to Date
     let print: Print = new Print(usrid, +amount, new Date(date), new Date(date_until), filename, name, +time, +length, +weight, +price);
+    // console.log(print);
+    
+    this.printsService.postPrint(print);
     console.log(print);
-    // this.printsService.postPrint(print);
-
-    this.clearInput();
+    // this.clearInput();
   }
-  // TODO: Clear input fields after successful submit
 
   private formatTime(str){
-      // Split XXhYYmin into X.YY
       var time = str.split("h");
       time[1] = (time[1].split("min"))[0];
-      // "+" to cast from string to int
       time =  +time[0] + (((time[1] / 100) / 60) * 100);
 
     return time;
