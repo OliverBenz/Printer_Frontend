@@ -20,7 +20,7 @@ export class IndexComponent implements OnInit {
     this.printsService.getQueue();
 
     this.printsService.queue.subscribe(data => {
-      if(data){
+      if(data.length > 0){
         this.queue = data;
         this.prints = true;
       }

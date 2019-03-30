@@ -12,7 +12,10 @@
         <th>Time Real</th>
         <th>Price</th>
       </tr>
+      
+
       <!-- TODO: Onclick: Expand and show more data about print -->
+      <!-- TODO: Show status, date_until, date_done, etc -->
       <tr *ngFor="let h of history" id="{{ h.getId() }}">
         <td>{{ h.getDate() }}</td>
         <td>{{ h.getAmount() }}</td>

@@ -19,10 +19,14 @@ const routes: Routes = [
   { path: 'add', component: AddComponent},
   { path: 'statistics', component: StatisticsComponent },
   { path: 'account', component: AccountComponent, children: [
+    { path: '', redirectTo: 'history', pathMatch: 'full' },
+
     { path: 'history', component: AcchistoryComponent},
     { path: 'queue', component: AccqueueComponent},
     { path: 'statistics', component: AccstatisticsComponent},
     { path: 'finance', component: AccfinanceComponent},
+
+    { path: '**', redirectTo: 'history', pathMatch: 'full' }
   ]},
   
   { path: '**', redirectTo: 'index', pathMatch: 'full'},

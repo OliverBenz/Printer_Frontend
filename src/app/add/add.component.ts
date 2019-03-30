@@ -1,6 +1,7 @@
 import { Print } from './../classes/prints';
 import { PrintsService } from './../services/prints.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../services/auth.service';
 
 @Component({
   selector: 'app-add',
@@ -8,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  // TODO: Get users from database;
   // usrid, amount, date, date_until, filename, name, time, length, weight, price
   public inputList = [
     ["Amount", "amount", "number"],
@@ -21,7 +21,8 @@ export class AddComponent implements OnInit {
   ];
 
   constructor(
-    private printsService: PrintsService
+    private printsService: PrintsService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() { }
@@ -42,27 +43,30 @@ export class AddComponent implements OnInit {
   // TODO: Only allow file upload if logged in
 
   public submit(){
-    // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
-    var amount = (<HTMLInputElement>document.getElementById("amount")).value;
-    var date = new Date().toISOString().split("T")[0];
-    var date_until = (<HTMLInputElement>document.getElementById("date_until")).value;
-    var filename = (<HTMLInputElement>document.getElementById("filename")).value;
-    var name = (<HTMLInputElement>document.getElementById("name")).value;
-    var time = (<HTMLInputElement>document.getElementById("time")).value;
-    var length = (<HTMLInputElement>document.getElementById("length")).value;
-    var weight = (<HTMLInputElement>document.getElementById("weight")).value;
-    var price = (<HTMLInputElement>document.getElementById("price")).value;
+    if(this.authService.checkSessionId()){
+      // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
+      var amount = (<HTMLInputElement>document.getElementById("amount")).value;
+      var date = new Date().toISOString().split("T")[0];
+      var date_until = (<HTMLInputElement>document.getElementById("date_until")).value;
+      var filename = (<HTMLInputElement>document.getElementById("filename")).value;
+      var name = (<HTMLInputElement>document.getElementById("name")).value;
+      var time = (<HTMLInputElement>document.getElementById("time")).value;
+      var length = (<HTMLInputElement>document.getElementById("length")).value;
+      var weight = (<HTMLInputElement>document.getElementById("weight")).value;
+      var price = (<HTMLInputElement>document.getElementById("price")).value;
 
-    // TODO: Get UserId from cookie
-    // TODO: round time to 2 decimal
+      let usrid: number = 0;
 
-    let usrid: number = 0;
+      // "+" is to cast string to number
+      let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100);
+ 
+      this.printsService.postPrint(print);
+      this.clearInput();
+    }
+    else{
+      alert("Login Needed");
+    }
 
-    // "+" is to cast string to number
-    let print: Print = new Print(usrid, +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, +length, +weight, +price);
-    
-    this.printsService.postPrint(print);
-    this.clearInput();
   }
 
   private formatTime(str){

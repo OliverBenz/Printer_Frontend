@@ -1,5 +1,5 @@
 export class Print{
-    private usrid: number;
+    private sessionId: string;
     private amount: number;
     private date: string;
     private date_until: string;
@@ -10,8 +10,8 @@ export class Print{
     private weight: number;
     private price: number;
 
-    constructor(usrid: number, amount: number, date: string, date_until: string, filename: string, name: string, time: number, length: number, weight: number, price: number){
-        this.usrid = usrid;
+    constructor(sessionId: string, amount: number, date: string, date_until: string, filename: string, name: string, time: number, length: number, weight: number, price: number){
+        this.sessionId = sessionId;
         this.amount = amount;
         this.date = date;
         this.date_until = date_until;
@@ -23,8 +23,8 @@ export class Print{
         this.price = price;
     }
 
-    public getUsrid(){
-        return this.usrid;
+    public getSessionId(){
+        return this.sessionId;
     }
     public getAmount(){
         return this.amount;
