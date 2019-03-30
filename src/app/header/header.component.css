@@ -11,10 +11,12 @@
     background-position-y: 25%;
     /* background-position: left; */
     
+    position: relative;
+
     color: white;
     overflow: hidden;
     display: block;
-    height: 400px;
+    height: 50vh;
     /* margin-bottom: 50px; */
     /* width: 100%; */
 }
@@ -24,7 +26,13 @@
 }
 /* Navbar */
 #navbar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     /* margin-bottom: 50px; */
+    /* float: bottom; */
+
 }
 ul {
     list-style-type: none;

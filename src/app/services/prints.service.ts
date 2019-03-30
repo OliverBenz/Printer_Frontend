@@ -43,7 +43,7 @@ export class PrintsService {
   public getUserHistory(sessionId: string){
     let url = "http://127.0.0.1:5000/user/history/" + sessionId;
 
-    this.http.get(url, httpOptions).subscribe(data => {
+    this.http.get<any>(url, httpOptions).subscribe(data => {
       var historyList: Array<History> = [];
 
       for(let i = 0; i < data.data.length; i++){
@@ -61,7 +61,7 @@ export class PrintsService {
 
     let body = JSON.parse('{"sessionId": "' + obj.getSessionId() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '"}');
     
-    this.http.post(url, body, httpOptions).subscribe(resp => {
+    this.http.post<any>(url, body, httpOptions).subscribe(resp => {
       console.log("Success");
       console.log(resp);
     }), error => {

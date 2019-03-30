@@ -2,6 +2,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { AddComponent } from './add/add.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
+import { StreamComponent } from './stream/stream.component';
 import { AccountComponent } from './account/account.component';
 import { AcchistoryComponent } from './account/acchistory/acchistory.component';
 import { AccqueueComponent } from './account/accqueue/accqueue.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'add', component: AddComponent},
   { path: 'statistics', component: StatisticsComponent },
+  { path: 'stream', component: StreamComponent },
   { path: 'account', component: AccountComponent, children: [
     { path: '', redirectTo: 'history', pathMatch: 'full' },
 

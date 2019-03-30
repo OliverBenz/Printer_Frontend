@@ -14,6 +14,7 @@ import { AcchistoryComponent } from './account/acchistory/acchistory.component';
 import { AccqueueComponent } from './account/accqueue/accqueue.component';
 import { AccstatisticsComponent } from './account/accstatistics/accstatistics.component';
 import { AccfinanceComponent } from './account/accfinance/accfinance.component';
+import { StreamComponent } from './stream/stream.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AccfinanceComponent } from './account/accfinance/accfinance.component';
     AcchistoryComponent,
     AccqueueComponent,
     AccstatisticsComponent,
-    AccfinanceComponent
+    AccfinanceComponent,
+    StreamComponent
   ],
   imports: [
     BrowserModule,
