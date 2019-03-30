@@ -1,7 +1,6 @@
 import { History } from './../classes/history';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject } from 'rxjs';
 

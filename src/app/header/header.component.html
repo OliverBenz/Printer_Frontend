@@ -6,6 +6,8 @@
     <li><a routerLink="/index">Home</a></li>
     <li><a routerLink="/statistics">Statistics</a></li>
     <li><a routerLink="/add">Add</a></li>
-    <li class="flRight"><a routerLink="/login">Login</a></li>
+    <li class="flRight" *ngIf="buttons.login"><a routerLink="/login">Login</a></li>
+    <li class="flRight" *ngIf="buttons.account"><a routerLink="/account">Account</a></li>
+    <li class="flRight" *ngIf="buttons.account" (click)="logout()"><a routerLink="/index">Logout</a></li>
   </ul>
 </div>

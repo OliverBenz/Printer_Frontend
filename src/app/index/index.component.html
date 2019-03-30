@@ -5,14 +5,14 @@
     <th>Name</th>
     <th>Length</th>
     <th>Weight</th>
-    <th>Price</th>
     <th>Time</th>
+    <th>Price</th>
   </tr>
   <tr *ngFor="let h of history" id="{{ h.getId() }}">
     <td id="name">{{ h.getName() }}</td>
     <td>{{ h.getLength() }} m</td>
     <td>{{ h.getWeight() }} g</td>
-    <td>{{ h.getPrice() }} €</td>
     <td>{{ h.getTime() }} h</td>
+    <td>{{ h.getPrice() }} €</td>
   </tr>
 </table>
