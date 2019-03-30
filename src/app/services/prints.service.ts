@@ -41,10 +41,12 @@ export class PrintsService {
   public postPrint(obj){
     let url = "http://127.0.0.1:5000/add";
 
-    // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
+
+    // Filename:     usrid-amount-date-date_till-filename-name-time-length-weight-price
+
     let body = JSON.parse('{"usrid": "' + obj.getUsrid() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '"}');
-    console.log(body);
-    this.http.post(url, httpOptions, body).subscribe(resp => {
+    
+    this.http.post(url, body, httpOptions).subscribe(resp => {
       console.log("Success");
       console.log(resp);
     }), error => {

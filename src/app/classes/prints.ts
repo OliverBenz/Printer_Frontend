@@ -1,8 +1,8 @@
 export class Print{
     private usrid: number;
     private amount: number;
-    private date: Date;
-    private date_until: Date;
+    private date: string;
+    private date_until: string;
     private filename: string;
     private name: string;
     private time: number;
@@ -10,7 +10,7 @@ export class Print{
     private weight: number;
     private price: number;
 
-    constructor(usrid: number, amount: number, date: Date, date_until: Date, filename: string, name: string, time: number, length: number, weight: number, price: number){
+    constructor(usrid: number, amount: number, date: string, date_until: string, filename: string, name: string, time: number, length: number, weight: number, price: number){
         this.usrid = usrid;
         this.amount = amount;
         this.date = date;

@@ -4,6 +4,7 @@
 #history{
     border-collapse: collapse;
     width: 100%;
+    text-align: center;
 }
 #history td,  #history th{
     border: 1px solid #ddd;
@@ -21,4 +22,7 @@
   text-align: center;
   background-color: #699BEA;
   color: white;
+}
+#name{
+    text-align: left;
 }

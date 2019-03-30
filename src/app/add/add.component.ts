@@ -12,7 +12,6 @@ export class AddComponent implements OnInit {
   // usrid, amount, date, date_until, filename, name, time, length, weight, price
   public inputList = [
     ["Amount", "amount", "number"],
-    ["Date", "date", "Date"],
     ["Date Until", "date_until", "Date"],
     ["Name", "name", "string"],
     ["Time", "time", "number"],
@@ -43,7 +42,7 @@ export class AddComponent implements OnInit {
     // TODO: Current Date - remove input field
     // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
     var amount = (<HTMLInputElement>document.getElementById("amount")).value;
-    var date = (<HTMLInputElement>document.getElementById("date")).value;
+    var date = new Date().toISOString().split("T")[0];
     var date_until = (<HTMLInputElement>document.getElementById("date_until")).value;
     var filename = (<HTMLInputElement>document.getElementById("filename")).value;
     var name = (<HTMLInputElement>document.getElementById("name")).value;
@@ -58,13 +57,10 @@ export class AddComponent implements OnInit {
     let usrid: number = 0;
 
     // "+" is to cast string to number
-    // new Date to cast string to Date
-    let print: Print = new Print(usrid, +amount, new Date(date), new Date(date_until), filename, name, +time, +length, +weight, +price);
-    // console.log(print);
+    let print: Print = new Print(usrid, +amount, date, date_until, filename, name, +time, +length, +weight, +price);
     
     this.printsService.postPrint(print);
-    console.log(print);
-    // this.clearInput();
+    this.clearInput();
   }
 
   private formatTime(str){
