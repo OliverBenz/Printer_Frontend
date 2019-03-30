@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
+  public prints = true;
 
   public history: Array<History> = [];
 
@@ -19,7 +20,13 @@ export class IndexComponent implements OnInit {
     this.printsService.getHistory();
 
     this.printsService.history.subscribe(data => {
-      this.history = data;
+      if(data){
+        this.history = data;
+        this.prints = true;
+      }
+      else{
+        this.prints = false;
+      }
     });
   }
 

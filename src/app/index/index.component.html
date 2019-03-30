@@ -1,7 +1,7 @@
 <div id="wrapper">
   <h1>Printer Queue</h1>
 
-  <table id="history">
+  <table id="history" *ngIf="prints">
     <tr>
       <th>Name</th>
       <th>Length</th>
@@ -17,4 +17,6 @@
       <td>{{ h.getPrice() }} €</td>
     </tr>
   </table>
+
+  <h1 id="noprints" *ngIf="!prints">No prints in queue</h1>
 </div>
