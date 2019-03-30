@@ -1,5 +1,7 @@
 /* General */
-
+#wrapper{
+    margin-top: 50px;
+}
 /* Table */
 #history{
     border-collapse: collapse;

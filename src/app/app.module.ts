@@ -10,6 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { AccountComponent } from './account/account.component';
+import { AcchistoryComponent } from './account/acchistory/acchistory.component';
+import { AccqueueComponent } from './account/accqueue/accqueue.component';
+import { AccstatisticsComponent } from './account/accstatistics/accstatistics.component';
+import { AccfinanceComponent } from './account/accfinance/accfinance.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { AccountComponent } from './account/account.component';
     HeaderComponent,
     LoginComponent,
     StatisticsComponent,
-    AccountComponent
+    AccountComponent,
+    AcchistoryComponent,
+    AccqueueComponent,
+    AccstatisticsComponent,
+    AccfinanceComponent
   ],
   imports: [
     BrowserModule,

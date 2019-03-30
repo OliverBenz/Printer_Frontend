@@ -1,18 +1,20 @@
-<h1>Printer Queue</h1>
+<div id="wrapper">
+  <h1>Printer Queue</h1>
 
-<table id="history">
-  <tr>
-    <th>Name</th>
-    <th>Length</th>
-    <th>Weight</th>
-    <th>Time</th>
-    <th>Price</th>
-  </tr>
-  <tr *ngFor="let h of history" id="{{ h.getId() }}">
-    <td id="name">{{ h.getName() }}</td>
-    <td>{{ h.getLength() }} m</td>
-    <td>{{ h.getWeight() }} g</td>
-    <td>{{ h.getTime() }} h</td>
-    <td>{{ h.getPrice() }} €</td>
-  </tr>
-</table>
+  <table id="history">
+    <tr>
+      <th>Name</th>
+      <th>Length</th>
+      <th>Weight</th>
+      <th>Time</th>
+      <th>Price</th>
+    </tr>
+    <tr *ngFor="let h of history" id="{{ h.getId() }}">
+      <td id="name">{{ h.getName() }}</td>
+      <td>{{ h.getLength() }} m</td>
+      <td>{{ h.getWeight() }} g</td>
+      <td>{{ h.getTime() }} h</td>
+      <td>{{ h.getPrice() }} €</td>
+    </tr>
+  </table>
+</div>

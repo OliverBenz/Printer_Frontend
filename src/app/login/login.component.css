@@ -1,7 +1,9 @@
 input{
     font-size: 16pt;
 }
-
+form{
+    margin-top: 50px;
+}
 button{
     color: black;
     background-color: Transparent;

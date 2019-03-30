@@ -3,6 +3,11 @@ import { AddComponent } from './add/add.component';
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { AccountComponent } from './account/account.component';
+import { AcchistoryComponent } from './account/acchistory/acchistory.component';
+import { AccqueueComponent } from './account/accqueue/accqueue.component';
+import { AccstatisticsComponent } from './account/accstatistics/accstatistics.component';
+import { AccfinanceComponent } from './account/accfinance/accfinance.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -13,7 +18,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'add', component: AddComponent},
   { path: 'statistics', component: StatisticsComponent },
-  { path: 'account', component: AccountComponent },
+  { path: 'account', component: AccountComponent, children: [
+    { path: 'history', component: AcchistoryComponent},
+    { path: 'queue', component: AccqueueComponent},
+    { path: 'statistics', component: AccstatisticsComponent},
+    { path: 'finance', component: AccfinanceComponent},
+  ]},
   
   { path: '**', redirectTo: 'index', pathMatch: 'full'},
 ];
