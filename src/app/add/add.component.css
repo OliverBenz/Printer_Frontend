@@ -1,6 +1,10 @@
 input{
     font-size: 16pt;
-    width: 90%;
+    /* width: 90%; */
+}
+
+.w3-col{
+    padding-right: 30px;
 }
 
 button{
