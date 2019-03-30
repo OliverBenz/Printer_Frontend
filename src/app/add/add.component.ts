@@ -38,8 +38,10 @@ export class AddComponent implements OnInit {
     }
   }
 
+  // TODO: Add file upload
+  // TODO: Only allow file upload if logged in
+
   public submit(){
-    // TODO: Current Date - remove input field
     // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
     var amount = (<HTMLInputElement>document.getElementById("amount")).value;
     var date = new Date().toISOString().split("T")[0];
@@ -50,9 +52,6 @@ export class AddComponent implements OnInit {
     var length = (<HTMLInputElement>document.getElementById("length")).value;
     var weight = (<HTMLInputElement>document.getElementById("weight")).value;
     var price = (<HTMLInputElement>document.getElementById("price")).value;
-
-    // TODO: Format Date
-
 
     let usrid: number = 0;
 
