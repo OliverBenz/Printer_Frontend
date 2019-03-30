@@ -1,18 +1,13 @@
-export class History{
+export class Queue{
     private id: number;
     private filename: string;
     private name: string;
     private length: number;
     private weight: number;
     private price: number;
-    private spoolId: number;
-    private time: number;
-    private time_real: number;
-    private amount: number;
-    private date: string;
-    private date_until: string;
-    private date_done: string;
-    
+    private time: Date;
+    private time_real: Date;
+
     constructor(obj){
         this.id = obj["id"];
         this.filename = obj["filename"];
@@ -20,13 +15,7 @@ export class History{
         this.length = obj["length"];
         this.weight = obj["weight"];
         this.price = obj["price"];
-        this.spoolId = obj["spoolId"]
         this.time = obj["time"];
-        this.time_real = obj["time_real"];
-        this.amount = obj["amount"];
-        this.date = obj["date"];
-        this.date_until = obj["date_until"];
-        this.date_done = obj["date_done"];
     }
 
     public getId(){
@@ -47,26 +36,13 @@ export class History{
     public getPrice(){
         return this.price;
     }
-    public getSpoolId(){
-        return this.spoolId;
-    }
-    public getTime(){
+    public getTime(){  
         return this.time;
     }
     public getTimeReal(){
         return this.time_real;
     }
-    public getAmount(){
-        return this.amount;
+    public setTimereal(time: Date){
+        this.time_real = time;
     }
-    public getDate(){
-        return this.date;
-    }
-    public getDateUntil(){
-        return this.date_until;
-    }
-    public getDateDone(){
-        return this.date_done;
-    }
-
 }

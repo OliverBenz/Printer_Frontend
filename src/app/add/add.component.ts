@@ -53,10 +53,13 @@ export class AddComponent implements OnInit {
     var weight = (<HTMLInputElement>document.getElementById("weight")).value;
     var price = (<HTMLInputElement>document.getElementById("price")).value;
 
+    // TODO: Get UserId from cookie
+    // TODO: round time to 2 decimal
+
     let usrid: number = 0;
 
     // "+" is to cast string to number
-    let print: Print = new Print(usrid, +amount, date, date_until, filename, name, +time, +length, +weight, +price);
+    let print: Print = new Print(usrid, +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, +length, +weight, +price);
     
     this.printsService.postPrint(print);
     this.clearInput();

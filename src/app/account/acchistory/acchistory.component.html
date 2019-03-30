@@ -1,3 +1,27 @@
-<p>
-  acchistory works!
-</p>
+<div>
+  <h1>History</h1>
+
+  <table id="history" *ngIf="historyExists">
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Name</th>
+        <th>Length</th>
+        <th>Weight</th>
+        <th>Time</th>
+        <th>Time Real</th>
+        <th>Price</th>
+      </tr>
+      <!-- TODO: Onclick: Expand and show more data about print -->
+      <tr *ngFor="let h of history" id="{{ h.getId() }}">
+        <td>{{ h.getDate() }}</td>
+        <td>{{ h.getAmount() }}</td>
+        <td>{{ h.getName() }}</td>
+        <td>{{ h.getLength() }} m</td>
+        <td>{{ h.getWeight() }} g</td>
+        <td>{{ h.getTime() }} h</td>
+        <td>{{ h.getTimeReal() }}</td>
+        <td>{{ h.getPrice() }} €</td>
+      </tr>
+    </table>
+</div>

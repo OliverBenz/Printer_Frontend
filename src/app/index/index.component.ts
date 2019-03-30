@@ -1,4 +1,4 @@
-import { History } from './../classes/history';
+import { Queue } from '../classes/queue';
 import { PrintsService } from './../services/prints.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,18 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class IndexComponent implements OnInit {
   public prints = true;
 
-  public history: Array<History> = [];
+  public queue: Array<Queue> = [];
 
   constructor(
     private printsService: PrintsService
   ) { }
 
   ngOnInit() {
-    this.printsService.getHistory();
+    this.printsService.getQueue();
 
-    this.printsService.history.subscribe(data => {
+    this.printsService.queue.subscribe(data => {
       if(data){
-        this.history = data;
+        this.queue = data;
         this.prints = true;
       }
       else{

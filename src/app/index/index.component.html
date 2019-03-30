@@ -9,12 +9,12 @@
       <th>Time</th>
       <th>Price</th>
     </tr>
-    <tr *ngFor="let h of history" id="{{ h.getId() }}">
-      <td id="name">{{ h.getName() }}</td>
-      <td>{{ h.getLength() }} m</td>
-      <td>{{ h.getWeight() }} g</td>
-      <td>{{ h.getTime() }} h</td>
-      <td>{{ h.getPrice() }} €</td>
+    <tr *ngFor="let q of queue" id="{{ q.getId() }}">
+      <td id="name">{{ q.getName() }}</td>
+      <td>{{ q.getLength() }} m</td>
+      <td>{{ q.getWeight() }} g</td>
+      <td>{{ q.getTime() }} h</td>
+      <td>{{ q.getPrice() }} €</td>
     </tr>
   </table>
 
