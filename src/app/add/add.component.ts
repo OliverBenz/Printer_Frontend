@@ -69,6 +69,10 @@ export class AddComponent implements OnInit {
 
   }
 
+  public test(file){
+    console.log(file);
+  }
+
   private formatTime(str){
       var time = str.split("h");
       time[1] = (time[1].split("min"))[0];
