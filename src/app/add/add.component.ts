@@ -1,6 +1,7 @@
+import { HelpersService } from './../services/helpers.service';
 import { Print } from './../classes/prints';
 import { PrintsService } from './../services/prints.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from './../services/auth.service';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css']
 })
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit, AfterContentInit{
   // usrid, amount, date, date_until, filename, name, time, length, weight, price
   public inputList = [
     ["Amount", "amount", "number"],
@@ -17,20 +18,36 @@ export class AddComponent implements OnInit {
     ["Time", "time", "number"],
     ["Length", "length", "number"],
     ["Weight", "weight", "number"],
-    ["Price", "price", "number"]
+    ["Price", "price", "number"],
+    ["Notes", "notes", "string"]
   ];
 
   constructor(
     private printsService: PrintsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private helpersService: HelpersService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    
+  }
 
-  public checkFilename(filename){
+  ngAfterContentInit(){
+    this.helpersService.file.subscribe(path => {
+      if(path){
+        this.checkFilename(path);
+      }
+    });
+  }
+
+  public checkFilename(path){
+    let temp = path.split("\\");
+    let filename = temp[temp.length - 1].split(".gcode")[0];
+
     if((filename.split("_").length - 1) == 4){
       let obj = filename.split("_");
-      
+
+      (<HTMLInputElement>document.getElementById("filename")).value = filename;
       (<HTMLInputElement>document.getElementById("name")).value = obj[0].replace(/-/g, " ");
       (<HTMLInputElement>document.getElementById("time")).value = this.formatTime(obj[1]);
       (<HTMLInputElement>document.getElementById("length")).value = obj[2].replace(",", ".");
@@ -54,11 +71,12 @@ export class AddComponent implements OnInit {
       var length = (<HTMLInputElement>document.getElementById("length")).value;
       var weight = (<HTMLInputElement>document.getElementById("weight")).value;
       var price = (<HTMLInputElement>document.getElementById("price")).value;
+      var notes = (<HTMLInputElement>document.getElementById("notes")).value;
 
       let usrid: number = 0;
 
       // "+" is to cast string to number
-      let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100);
+      let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100, notes);
  
       this.printsService.postPrint(print);
       this.clearInput();
@@ -80,6 +98,7 @@ export class AddComponent implements OnInit {
 
     return time;
   }
+
   private clearInput(){
     (<HTMLFormElement>document.getElementById('printForm')).reset();
   }

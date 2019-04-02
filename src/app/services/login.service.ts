@@ -28,7 +28,7 @@ export class LoginService {
       console.log(result);
     }, error => {
       let val = error.error.text
-      if (val != "Error"){
+      if (val && val != "Error"){
         this.authService.storeSessionId(error.error.text);
         this.router.navigate(['account']);
         window.location.reload();  

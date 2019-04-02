@@ -9,8 +9,9 @@ export class Print{
     private length: number;
     private weight: number;
     private price: number;
+    private notes: string;
 
-    constructor(sessionId: string, amount: number, date: string, date_until: string, filename: string, name: string, time: number, length: number, weight: number, price: number){
+    constructor(sessionId: string, amount: number, date: string, date_until: string, filename: string, name: string, time: number, length: number, weight: number, price: number, notes: string){
         this.sessionId = sessionId;
         this.amount = amount;
         this.date = date;
@@ -21,6 +22,7 @@ export class Print{
         this.length = length;
         this.weight = weight;
         this.price = price;
+        this.notes = notes;
     }
 
     public getSessionId(){
@@ -52,6 +54,9 @@ export class Print{
     }
     public getPrice(){
         return this.price;
+    }
+    public getNotes(){
+        return this.notes;
     }
     
 }

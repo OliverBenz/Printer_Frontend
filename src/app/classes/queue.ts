@@ -7,6 +7,7 @@ export class Queue{
     private price: number;
     private time: Date;
     private time_real: Date;
+    private notes: string;
 
     constructor(obj){
         this.id = obj["id"];
@@ -16,6 +17,7 @@ export class Queue{
         this.weight = obj["weight"];
         this.price = obj["price"];
         this.time = obj["time"];
+        this.notes = obj["notes"];
     }
 
     public getId(){
@@ -44,5 +46,8 @@ export class Queue{
     }
     public setTimereal(time: Date){
         this.time_real = time;
+    }
+    public getNotes(){
+        return this.notes;
     }
 }

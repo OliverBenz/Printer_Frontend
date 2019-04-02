@@ -5,12 +5,15 @@
     <ul>
       <li><a routerLink="/index">Home</a></li>
       <li><a routerLink="/statistics">Statistics</a></li>
-      <li><a routerLink="/add">Add</a></li>
+      <li><a><input type="button" id="fileButton" value="New Print" (click)="clickFileButton()" /></a></li>
+
+      <!-- <li><a routerLink="/add">Add</a></li> -->
       <li><a routerLink="/stream">Stream</a></li>
+      <li><a><input type="file" id="selectedFile" style="display: none;" (change)="handleFiles()" /></a></li>
+
       <li class="flRight" *ngIf="buttons.login"><a routerLink="/login">Login</a></li>
       <li class="flRight" *ngIf="buttons.account"><a routerLink="/account">Account</a></li>
       <li class="flRight" *ngIf="buttons.account" (click)="logout()"><a routerLink="/index">Logout</a></li>
     </ul>
   </div>
 </div>
-

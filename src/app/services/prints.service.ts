@@ -20,8 +20,8 @@ export class PrintsService {
   queue = this.queueSource.asObservable();
 
   // Article Normal
-  private historySource = new BehaviorSubject<any>("");
-  history = this.historySource.asObservable();
+  private printsSource = new BehaviorSubject<any>("");
+  prints = this.printsSource.asObservable();
 
   constructor(
     private http: HttpClient
@@ -40,17 +40,17 @@ export class PrintsService {
     })
   }
 
-  public getUserHistory(sessionId: string){
-    let url = "http://127.0.0.1:5000/user/history/" + sessionId;
+  public getUserPrints(value: string, sessionId: string){
+    let url = "http://127.0.0.1:5000/user/" + value + "/" + sessionId;
 
     this.http.get<any>(url, httpOptions).subscribe(data => {
       var historyList: Array<History> = [];
-
+      console.log(data);
       for(let i = 0; i < data.data.length; i++){
         historyList.push(new History(data.data[i]));
       }
 
-      this.historySource.next(historyList);
+      this.printsSource.next(historyList);
     });
   }
 
@@ -59,7 +59,7 @@ export class PrintsService {
 
     // Filename:     sessionId-amount-date-date_till-filename-name-time-length-weight-price
 
-    let body = JSON.parse('{"sessionId": "' + obj.getSessionId() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '"}');
+    let body = JSON.parse('{"sessionId": "' + obj.getSessionId() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '", "notes": "' + obj.getNotes() + '"}');
     
     this.http.post<any>(url, body, httpOptions).subscribe(resp => {
       console.log("Success");

@@ -12,6 +12,7 @@ export class History{
     private date: string;
     private date_until: string;
     private date_done: string;
+    private notes: string;
     
     constructor(obj){
         this.id = obj["id"];
@@ -27,6 +28,7 @@ export class History{
         this.date = obj["date"];
         this.date_until = obj["date_until"];
         this.date_done = obj["date_done"];
+        this.notes = obj["notes"];
     }
 
     public getId(){
@@ -67,6 +69,9 @@ export class History{
     }
     public getDateDone(){
         return this.date_done;
+    }
+    public getNotes(){
+        return this.notes;
     }
 
 }

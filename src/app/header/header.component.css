@@ -2,6 +2,12 @@
 .flRight{
     float: right;
 }
+#fileButton{
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
 
 /* Background */
 #background{

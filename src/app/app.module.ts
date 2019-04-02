@@ -10,11 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { AccountComponent } from './account/account.component';
-import { AcchistoryComponent } from './account/acchistory/acchistory.component';
-import { AccqueueComponent } from './account/accqueue/accqueue.component';
 import { AccstatisticsComponent } from './account/accstatistics/accstatistics.component';
 import { AccfinanceComponent } from './account/accfinance/accfinance.component';
 import { StreamComponent } from './stream/stream.component';
+import { AccprintsComponent } from './account/accprints/accprints.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +24,10 @@ import { StreamComponent } from './stream/stream.component';
     LoginComponent,
     StatisticsComponent,
     AccountComponent,
-    AcchistoryComponent,
-    AccqueueComponent,
     AccstatisticsComponent,
     AccfinanceComponent,
-    StreamComponent
+    StreamComponent,
+    AccprintsComponent
   ],
   imports: [
     BrowserModule,

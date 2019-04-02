@@ -1,3 +1,4 @@
+import { HelpersService } from './../services/helpers.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
   }
   constructor(
     private authService: AuthService,
+    private helpersService: HelpersService,
     private router: Router
   ) { }
 
@@ -26,6 +28,15 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 
+  public handleFiles(){
+    let path = (<HTMLInputElement>document.getElementById("selectedFile")).value;
+    this.helpersService.fileSource.next(path);
+    this.router.navigate(["/add"]);
+  }
+
+  public clickFileButton(){
+    document.getElementById('selectedFile').click();
+  }
   private checkLogin(){
     if (this.authService.checkSessionId()){
       this.buttons.login = false;

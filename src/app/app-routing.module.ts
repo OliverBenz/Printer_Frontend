@@ -4,11 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { StreamComponent } from './stream/stream.component';
 import { AccountComponent } from './account/account.component';
-import { AcchistoryComponent } from './account/acchistory/acchistory.component';
-import { AccqueueComponent } from './account/accqueue/accqueue.component';
 import { AccstatisticsComponent } from './account/accstatistics/accstatistics.component';
 import { AccfinanceComponent } from './account/accfinance/accfinance.component';
-
+import { AccprintsComponent } from './account/accprints/accprints.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -21,16 +19,15 @@ const routes: Routes = [
   { path: 'statistics', component: StatisticsComponent },
   { path: 'stream', component: StreamComponent },
   { path: 'account', component: AccountComponent, children: [
-    { path: '', redirectTo: 'history', pathMatch: 'full' },
-
-    { path: 'history', component: AcchistoryComponent},
-    { path: 'queue', component: AccqueueComponent},
+    { path: '', redirectTo: 'prints', pathMatch: 'full' },
+    
+    { path: 'prints', component: AccprintsComponent},
     { path: 'statistics', component: AccstatisticsComponent},
     { path: 'finance', component: AccfinanceComponent},
 
     { path: '**', redirectTo: 'history', pathMatch: 'full' }
   ]},
-  
+
   { path: '**', redirectTo: 'index', pathMatch: 'full'},
 ];
 

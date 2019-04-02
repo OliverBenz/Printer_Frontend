@@ -1,5 +1,8 @@
 <div>
-  <h1>History</h1>
+  <h1 id="prints">Prints</h1>
+  <select #select (change)="getData(select.value)">
+    <option *ngFor="let s of selections" value="{{ s[1] }}">{{ s[0] }}</option>
+  </select>
 
   <table id="history" *ngIf="historyExists">
       <tr>
@@ -9,13 +12,14 @@
         <th>Length</th>
         <th>Weight</th>
         <th>Time</th>
-        <th>Time Real</th>
         <th>Price</th>
       </tr>
       
-
       <!-- TODO: Onclick: Expand and show more data about print -->
       <!-- TODO: Show status, date_until, date_done, etc -->
+
+
+      <!-- TODO: Make elements clickable and show more information in popup -->
       <tr *ngFor="let h of history" id="{{ h.getId() }}">
         <td>{{ h.getDate() }}</td>
         <td>{{ h.getAmount() }}</td>
@@ -23,7 +27,6 @@
         <td>{{ h.getLength() }} m</td>
         <td>{{ h.getWeight() }} g</td>
         <td>{{ h.getTime() }} h</td>
-        <td>{{ h.getTimeReal() }}</td>
         <td>{{ h.getPrice() }} €</td>
       </tr>
     </table>
