@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { AddComponent } from './add/add.component';
 import { IndexComponent } from './index/index.component';
@@ -14,6 +16,9 @@ import { AccstatisticsComponent } from './account/accstatistics/accstatistics.co
 import { AccfinanceComponent } from './account/accfinance/accfinance.component';
 import { StreamComponent } from './stream/stream.component';
 import { AccprintsComponent } from './account/accprints/accprints.component';
+
+import { FileSelectDirective } from 'ng2-file-upload';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,12 +32,14 @@ import { AccprintsComponent } from './account/accprints/accprints.component';
     AccstatisticsComponent,
     AccfinanceComponent,
     StreamComponent,
-    AccprintsComponent
+    AccprintsComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     CookieService
