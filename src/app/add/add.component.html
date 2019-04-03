@@ -5,19 +5,48 @@
       <input #filename id="filename" (keyup)="checkFilename(filename.value)" class="w3-input" type="string">
       <br>
     </div>
-    
-    <!-- <div class="w3-col s12 m12 l4" >
-      <label class="w3-text-teal" ><b>File</b></label>
-      <input #file id="file" type="file">
-    </div> -->
-    <!-- TODO: Read filename if correct format and auto insert -->
-
-    <div class="w3-col s12 m6 l4" *ngFor="let i of inputList">
-      <label class="w3-text-teal"><b>{{ i[0] }}</b></label>
-      <input id="{{ i[1] }}" class="w3-input" type="{{ i[2] }}">
+   
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Amount</b></label>
+      <input id="amount" class="w3-input" type="number">
       <br>
     </div>
-  
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Date Until</b></label>
+      <input id="date_until" class="w3-input" type="Date">
+      <br>
+    </div>
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Name</b></label>
+      <input id="name" class="w3-input" type="string">
+      <br>
+    </div>
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Time</b></label>
+      <input id="time" class="w3-input" type="number">
+      <br>
+    </div>
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Length</b></label>
+      <input id="length" class="w3-input" type="number">
+      <br>
+    </div>
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Weight</b></label>
+      <input id="weight" class="w3-input" type="number">
+      <br>
+    </div>
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Price</b></label>
+      <input id="price" class="w3-input" type="number">
+      <br>
+    </div>
+    <div class="w3-col s12 m6 l4">
+      <label class="w3-text-teal"><b>Notes</b></label>
+      <input id="notes" class="w3-input" type="string">
+      <br>
+    </div>
+
     <button type="button" class="w3-btn darker-grey" (click)="submit()">Sumbit</button>
   </form>
 </div>

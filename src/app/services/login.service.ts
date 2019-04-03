@@ -20,9 +20,9 @@ export class LoginService {
     private authService: AuthService
   ) { }
 
-  public login(username, password){
+  public login(email, password){
     let url = "http://127.0.0.1:5000/user/login";
-    let body = JSON.parse('{"username": "' + username + '", "password": "' + password + '"}');
+    let body = JSON.parse('{"email": "' + email + '", "password": "' + password + '"}');
 
     this.http.post(url, body, httpOptions).subscribe(result => {
       console.log(result);

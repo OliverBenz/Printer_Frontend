@@ -24,18 +24,10 @@ export class PrintsService {
   private printsSource = new BehaviorSubject<any>("");
   prints = this.printsSource.asObservable();
 
-  private file: File = null;
-
   constructor(
     private http: HttpClient,
     private helpersService: HelpersService
-  ) {
-    this.helpersService.file.subscribe(file => {
-      if(file){
-        this.file = file;
-      }
-    })
-  }
+  ) { }
 
   public getQueue(){
     let url = "http://127.0.0.1:5000/queue/To-Do";
@@ -64,25 +56,31 @@ export class PrintsService {
     });
   }
 
-  public postPrint(obj){
+  public postPrint(obj, file){
 
     // Filename:     sessionId-amount-date-date_till-filename-name-time-length-weight-price
 
     let body = JSON.parse('{"sessionId": "' + obj.getSessionId() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '", "notes": "' + obj.getNotes() + '"}');
     
     this.http.post<any>("http://127.0.0.1:5000/add", body, httpOptions).subscribe(resp => {
-      console.log("Success");
+      console.log("Post Success");
       console.log(resp);
+      
+      // Start file upload if successful
+      var fd = new FormData();
+      fd.append('file', file, file.name);
+      
+      // httpOptions.headers = httpOptions.headers.set('Content-Type', 'multipart/form-data');
+
+      this.http.post<any>("http://127.0.0.1:5000/file", fd).subscribe(res => {
+        console.log(res);
+      }, error => {
+        console.log("File Error");
+        console.log(error);
+      });
     }), error => {
       console.log("Error");
       console.log(error);
     };
-
-    console.log(this.file.name);
-    const fd = new FormData();
-    fd.append('print', this.file, this.file.name);
-    this.http.post<any>("127.0.0.1:5000/file", fd).subscribe(res => {
-      console.log(res);
-    });
   }
 }

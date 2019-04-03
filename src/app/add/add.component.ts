@@ -13,16 +13,6 @@ import { AuthService } from './../services/auth.service';
 export class AddComponent implements OnInit, AfterContentInit{
   // usrid, amount, date, date_until, filename, name, time, length, weight, price
   private file: File = null;
-  public inputList = [
-    ["Amount", "amount", "number"],
-    ["Date Until", "date_until", "Date"],
-    ["Name", "name", "string"],
-    ["Time", "time", "number"],
-    ["Length", "length", "number"],
-    ["Weight", "weight", "number"],
-    ["Price", "price", "number"],
-    ["Notes", "notes", "string"]
-  ];
 
   constructor(
     private printsService: PrintsService,
@@ -31,22 +21,22 @@ export class AddComponent implements OnInit, AfterContentInit{
   ) { }
 
   ngOnInit() {
-    
+    this.helpersService.file.subscribe(file => {
+      if(file != null){
+        this.file = file;
+      }
+    });
   }
 
   ngAfterContentInit(){
-    this.helpersService.file.subscribe(file => {
-      if(file){
-        this.file = file;
-        this.checkFilename();
-      }
-    });
-   
+    if(this.file != null){
+      this.checkFilename();
+    }
   }
 
   public checkFilename(){
     let filename = this.file.name.split(".gcode")[0];
-    console.log(filename);
+    
     if((filename.split("_").length - 1) == 4){
       let obj = filename.split("_");
 
@@ -59,7 +49,6 @@ export class AddComponent implements OnInit, AfterContentInit{
     }
   }
 
-  // TODO: Add file upload
   // TODO: Only allow file upload if logged in
 
   public submit(){
@@ -81,7 +70,7 @@ export class AddComponent implements OnInit, AfterContentInit{
       // "+" is to cast string to number
       let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100, notes);
  
-      this.printsService.postPrint(print);
+      this.printsService.postPrint(print, this.file);
       this.clearInput();
     }
     else{

@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class HelpersService {
-  public fileSource = new BehaviorSubject<any>("");
+  public fileSource = new BehaviorSubject<any>(null);
   file = this.fileSource.asObservable();
 
   constructor() { }
