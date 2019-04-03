@@ -9,7 +9,7 @@
 
       <!-- <li><a routerLink="/add">Add</a></li> -->
       <li><a routerLink="/stream">Stream</a></li>
-      <li><a><input type="file" id="selectedFile" style="display: none;" (change)="handleFiles()" /></a></li>
+      <li><a><input type="file" id="selectedFile" style="display: none;" (change)="handleFiles($event)" /></a></li>
 
       <li class="flRight" *ngIf="buttons.login"><a routerLink="/login">Login</a></li>
       <li class="flRight" *ngIf="buttons.account"><a routerLink="/account">Account</a></li>

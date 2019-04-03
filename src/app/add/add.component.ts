@@ -12,6 +12,7 @@ import { AuthService } from './../services/auth.service';
 })
 export class AddComponent implements OnInit, AfterContentInit{
   // usrid, amount, date, date_until, filename, name, time, length, weight, price
+  private file: File = null;
   public inputList = [
     ["Amount", "amount", "number"],
     ["Date Until", "date_until", "Date"],
@@ -34,17 +35,18 @@ export class AddComponent implements OnInit, AfterContentInit{
   }
 
   ngAfterContentInit(){
-    this.helpersService.file.subscribe(path => {
-      if(path){
-        this.checkFilename(path);
+    this.helpersService.file.subscribe(file => {
+      if(file){
+        this.file = file;
+        this.checkFilename();
       }
     });
+   
   }
 
-  public checkFilename(path){
-    let temp = path.split("\\");
-    let filename = temp[temp.length - 1].split(".gcode")[0];
-
+  public checkFilename(){
+    let filename = this.file.name.split(".gcode")[0];
+    console.log(filename);
     if((filename.split("_").length - 1) == 4){
       let obj = filename.split("_");
 
@@ -86,10 +88,6 @@ export class AddComponent implements OnInit, AfterContentInit{
       alert("Login Needed");
     }
 
-  }
-
-  public test(file){
-    console.log(file);
   }
 
   private formatTime(str){

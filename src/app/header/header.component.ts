@@ -28,9 +28,8 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
   }
 
-  public handleFiles(){
-    let path = (<HTMLInputElement>document.getElementById("selectedFile")).value;
-    this.helpersService.fileSource.next(path);
+  public handleFiles(event){
+    this.helpersService.fileSource.next(<File>event.target.files[0]);
     this.router.navigate(["/add"]);
   }
 
