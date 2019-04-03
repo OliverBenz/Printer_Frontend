@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AddComponent } from './add/add.component';
 import { IndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login-site/login/login.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { AccountComponent } from './account/account.component';
 import { AccstatisticsComponent } from './account/accstatistics/accstatistics.component';
@@ -19,6 +19,8 @@ import { AccprintsComponent } from './account/accprints/accprints.component';
 
 import { FileSelectDirective } from 'ng2-file-upload';
 import { FormsModule } from '@angular/forms';
+import { LoginSiteComponent } from './login-site/login-site.component';
+import { RegisterComponent } from './login-site/register/register.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     AccfinanceComponent,
     StreamComponent,
     AccprintsComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    LoginSiteComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

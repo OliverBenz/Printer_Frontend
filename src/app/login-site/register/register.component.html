@@ -1,0 +1,17 @@
+<div>
+    <form class="w3-container w3-padding">  
+      <label class="w3-text-teal"><b>Email</b></label>
+      <input #name class="w3-input" (keyup.enter)="Register(name.value, email.value, password.value)" type="username">
+      <br>
+
+      <label class="w3-text-teal"><b>Email</b></label>
+      <input #email class="w3-input" (keyup.enter)="Register(name.value, email.value, password.value)" type="email">
+      <br>
+    
+      <label class="w3-text-teal"><b>Password</b></label>
+      <input #password class="w3-input" (keyup.enter)="Register(name.value, email.value, password.value)" type="password">
+      <br>
+    
+      <button type="button" class="w3-btn darker-grey" (click)="Register(name.value, email.value, password.value)">Login</button>
+    </form>
+  </div>

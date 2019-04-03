@@ -1,6 +1,6 @@
 import { StatisticsComponent } from './statistics/statistics.component';
 import { AddComponent } from './add/add.component';
-import { LoginComponent } from './login/login.component';
+import { LoginSiteComponent } from './login-site/login-site.component'
 import { IndexComponent } from './index/index.component';
 import { StreamComponent } from './stream/stream.component';
 import { AccountComponent } from './account/account.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   
   { path: 'index', component: IndexComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginSiteComponent },
   { path: 'add', component: AddComponent},
   { path: 'statistics', component: StatisticsComponent },
   { path: 'stream', component: StreamComponent },

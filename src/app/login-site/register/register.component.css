@@ -1,0 +1,27 @@
+input{
+    font-size: 16pt;
+}
+form{
+    margin-top: 50px;
+}
+button{
+    color: black;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+  
+    width: 100%;
+    text-align: center;
+  
+    /* Border */
+    border: 1px solid black;
+    border-color: black;
+  
+    /* Size */
+    padding-left: 10px;
+    padding-right: 10px;
+  
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
