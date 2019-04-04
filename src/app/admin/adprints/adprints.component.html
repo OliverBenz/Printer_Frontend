@@ -1,4 +1,17 @@
-<div *ngFor="let j of jobs">
-  <!-- Base info as collapsable -->
-  <!-- All the information when opened -->
+<h1>Queue</h1>
+
+<div class="w3-card w3-hover-shadow">
+  <div (click)="toggleCollapse(1)" class="w3-container">
+    <h2>Printname</h2>
+  </div>
+  <div *ngIf="show" class="w3-container">
+    <div class="w3-col s6 m6 l4">
+        <h5>Information 1</h5>
+    </div>
+    <div class="w3-col s6 m6 l4">
+        <select id="status">
+            <option *ngFor="let s of status" value="{{ s[0] }}">{{ s[1] }}</option>
+        </select>
+    </div>
+  </div>
 </div>

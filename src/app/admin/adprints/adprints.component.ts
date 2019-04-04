@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdprintsComponent implements OnInit {
   public jobs = [];
-
-  constructor() { }
+  public show = false;
+  public status = [
+    [0, "To Do"],
+    [1, "Printing"],
+    [2, "Invalid"],
+    [3, "Removed"],
+    [4, "Failed"],
+    [6, "Done"]
+  ]
+  constructor() {
+    
+  }
 
   ngOnInit() {
   }
+
+  public toggleCollapse(id){
+    this.show = !this.show;
+  }
+
 }

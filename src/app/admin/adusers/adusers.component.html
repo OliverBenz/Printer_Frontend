@@ -1,3 +1,19 @@
-<p>
-  adusers works!
-</p>
+<h1>Users</h1>
+
+<div class="w3-card w3-hover-shadow">
+  <div (click)="show = !show" class="w3-container">
+    <h2>Username</h2>
+  </div>
+
+  <div *ngIf="show" class="w3-container">
+    <div class="w3-col s6 m6 l4">
+        <h5>E-Mail.</h5>
+    </div>
+    <div class="w3-col s6 m6 l4">
+        <select #select>
+            <option *ngFor="let g of groups" value="{{ g[0] }}">{{ g[1] }}</option>
+        </select>
+    </div>
+    
+  </div>
+</div>
