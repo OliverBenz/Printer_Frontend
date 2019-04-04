@@ -22,6 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginSiteComponent } from './login-site/login-site.component';
 import { RegisterComponent } from './login-site/register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdprintsComponent } from './admin/adprints/adprints.component';
+import { AdusersComponent } from './admin/adusers/adusers.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AdminComponent } from './admin/admin.component';
     FileSelectDirective,
     LoginSiteComponent,
     RegisterComponent,
-    AdminComponent
+    AdminComponent,
+    AdprintsComponent,
+    AdusersComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,8 @@ import { AccstatisticsComponent } from './account/accstatistics/accstatistics.co
 import { AccfinanceComponent } from './account/accfinance/accfinance.component';
 import { AccprintsComponent } from './account/accprints/accprints.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdprintsComponent } from './admin/adprints/adprints.component';
+import { AdusersComponent } from './admin/adusers/adusers.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -19,7 +21,14 @@ const routes: Routes = [
   { path: 'add', component: AddComponent},
   { path: 'statistics', component: StatisticsComponent },
   { path: 'stream', component: StreamComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, children: [
+    { path: '', redirectTo: 'prints', pathMatch: 'full' },
+
+    { path: 'prints', component: AdprintsComponent },
+    { path: 'users', component: AdusersComponent },
+
+    { path: '**', redirectTo: 'prints', pathMatch: 'full' }
+  ]},
   { path: 'account', component: AccountComponent, children: [
     { path: '', redirectTo: 'prints', pathMatch: 'full' },
     
