@@ -14,6 +14,8 @@ const httpOptions = {
 })
 export class LoginService {
 
+  private _url = "http://127.0.0.1:5000";
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -21,18 +23,26 @@ export class LoginService {
   ) { }
 
   public login(email, password){
-    let url = "http://127.0.0.1:5000/user/login";
+    let url = this._url + "/user/login";
     let body = JSON.parse('{"email": "' + email + '", "password": "' + password + '"}');
 
-    this.http.post(url, body, httpOptions).subscribe(result => {
-      console.log(result);
+    this.http.post<any>(url, body, httpOptions).subscribe(result => {
+      this.authService.storeSessionId(result.data);
+      this.router.navigate(['account']);
+      window.location.reload();
     }, error => {
-      let val = error.error.text
-      if (val && val != "Error"){
-        this.authService.storeSessionId(error.error.text);
-        this.router.navigate(['account']);
-        window.location.reload();  
-      }
+      console.log(error)
     });
+  }
+
+  public register(name, email, password){
+    let url = this._url + "/user/register";
+    let body = JSON.parse('{"username": "' + name + '", "email": "' + email + '", "password": "' + password + '"}');
+
+    this.http.post(url, body, httpOptions).subscribe(res => {
+      console.log(res);
+    }, error => {
+      console.log(error);
+    })
   }
 }

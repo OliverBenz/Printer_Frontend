@@ -13,7 +13,7 @@ export class AccprintsComponent implements OnInit {
   public historyExists = true;
 
   public selections = [
-    ["To Do", "todo"],
+    ["To Do", "to-do"],
     ["Removed", "removed"],
     ["Invalid", "invalid"],
     ["Failed", "failed"],
@@ -27,7 +27,7 @@ export class AccprintsComponent implements OnInit {
 
   ngOnInit() {
     // TODO: Init value
-    this.getData("todo");
+    this.getData("to-do");
     this.printsService.prints.subscribe(data => {
       if(data){
         this.history = data;

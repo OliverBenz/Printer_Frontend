@@ -1,6 +1,6 @@
 <div>
     <form class="w3-container w3-padding">  
-      <label class="w3-text-teal"><b>Email</b></label>
+      <label class="w3-text-teal"><b>Name</b></label>
       <input #name class="w3-input" (keyup.enter)="Register(name.value, email.value, password.value)" type="username">
       <br>
 
@@ -12,6 +12,6 @@
       <input #password class="w3-input" (keyup.enter)="Register(name.value, email.value, password.value)" type="password">
       <br>
     
-      <button type="button" class="w3-btn darker-grey" (click)="Register(name.value, email.value, password.value)">Login</button>
+      <button type="button" class="w3-btn darker-grey" (click)="Register(name.value, email.value, password.value)">Register</button>
     </form>
   </div>

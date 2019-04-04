@@ -16,6 +16,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PrintsService {
+  private _url = "http://127.0.0.1:5000"
+
   // Article Normal
   private queueSource = new BehaviorSubject<any>("");
   queue = this.queueSource.asObservable();
@@ -30,7 +32,7 @@ export class PrintsService {
   ) { }
 
   public getQueue(){
-    let url = "http://127.0.0.1:5000/queue/To-Do";
+    let url = this._url + "/print/to-do";
 
     this.http.get<any>(url, httpOptions).subscribe(data => {
       var queueList: Array<Queue> = [];
@@ -43,7 +45,7 @@ export class PrintsService {
   }
 
   public getUserPrints(value: string, sessionId: string){
-    let url = "http://127.0.0.1:5000/user/" + value + "/" + sessionId;
+    let url = this._url + "/job/" + value + "/" + sessionId;
 
     this.http.get<any>(url, httpOptions).subscribe(data => {
       var historyList: Array<History> = [];
@@ -57,14 +59,14 @@ export class PrintsService {
   }
 
   public postPrint(obj, file){
-
     // Filename:     sessionId-amount-date-date_till-filename-name-time-length-weight-price
 
     let body = JSON.parse('{"sessionId": "' + obj.getSessionId() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '", "notes": "' + obj.getNotes() + '"}');
     
-    this.http.post<any>("http://127.0.0.1:5000/add", body, httpOptions).subscribe(resp => {
+    this.http.post<any>(this._url + "/job", body, httpOptions).subscribe(resp => {
       console.log("Post Success");
       console.log(resp);
+      alert(resp.data);
       
       // Start file upload if successful
       var fd = new FormData();
@@ -72,7 +74,7 @@ export class PrintsService {
       
       // httpOptions.headers = httpOptions.headers.set('Content-Type', 'multipart/form-data');
 
-      this.http.post<any>("http://127.0.0.1:5000/file", fd).subscribe(res => {
+      this.http.post<any>(this._url + "/file", fd).subscribe(res => {
         console.log(res);
       }, error => {
         console.log("File Error");
