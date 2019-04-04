@@ -31,7 +31,7 @@ export class LoginService {
       this.router.navigate(['account']);
       window.location.reload();
     }, error => {
-      console.log(error)
+      alert(error.error.data);
     });
   }
 

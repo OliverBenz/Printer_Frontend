@@ -8,9 +8,9 @@
       <tr>
         <th>Date</th>
         <th>Amount</th>
-        <th>Name</th>
-        <th>Length</th>
-        <th>Weight</th>
+        <th id="name">Name</th>
+        <!-- <th>Length</th> -->
+        <!-- <th>Weight</th> -->
         <th>Time</th>
         <th>Price</th>
       </tr>
@@ -24,10 +24,10 @@
         <td>{{ h.getDate() }}</td>
         <td>{{ h.getAmount() }}</td>
         <td>{{ h.getName() }}</td>
-        <td>{{ h.getLength() }} m</td>
-        <td>{{ h.getWeight() }} g</td>
-        <td>{{ h.getTime() }} h</td>
-        <td>{{ h.getPrice() }} €</td>
+        <!-- <td>{{ h.getLength() }} m</td> -->
+        <!-- <td>{{ h.getWeight() }} g</td> -->
+        <td id="time">{{ h.getTime() }} h</td>
+        <td id="price">{{ h.getPrice() }} €</td>
       </tr>
     </table>
 </div>

@@ -21,6 +21,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { FormsModule } from '@angular/forms';
 import { LoginSiteComponent } from './login-site/login-site.component';
 import { RegisterComponent } from './login-site/register/register.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RegisterComponent } from './login-site/register/register.component';
     AccprintsComponent,
     FileSelectDirective,
     LoginSiteComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

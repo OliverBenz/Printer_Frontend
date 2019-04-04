@@ -1,7 +1,14 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HelpersService } from './../services/helpers.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Content-Type": "application/json"
+  })
+};
 
 @Component({
   selector: 'app-header',
@@ -9,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public admin = false;
   public buttons = {
     login: true,
     account: false
@@ -16,7 +24,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private helpersService: HelpersService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -40,6 +49,7 @@ export class HeaderComponent implements OnInit {
     if (this.authService.checkSessionId()){
       this.buttons.login = false;
       this.buttons.account = true;
+      this.checkGroup();
     }
     else{
       this.buttons.login = true;
@@ -47,4 +57,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  private checkGroup(){
+    let body = JSON.parse('{"sessionId": "' + this.authService.getSessionId() + '"}');
+    this.http.post<any>("http://127.0.0.1:5000/user/group", body, httpOptions).subscribe(data => {
+      if(data.data == "Admin"){
+        this.admin = true;
+      }
+    });
+  }
 }

@@ -33,6 +33,10 @@ select{
 }
 #name{
     text-align: left;
+    /* width: 25%; */
+}
+#time, #price{
+  text-align: right;
 }
 
 

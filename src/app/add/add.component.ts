@@ -4,7 +4,6 @@ import { PrintsService } from './../services/prints.service';
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
 
-
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',

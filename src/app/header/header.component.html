@@ -6,9 +6,8 @@
       <li><a routerLink="/index">Home</a></li>
       <li><a routerLink="/statistics">Statistics</a></li>
       <li><a><input type="button" id="fileButton" value="New Print" (click)="clickFileButton()" /></a></li>
-
-      <!-- <li><a routerLink="/add">Add</a></li> -->
       <li><a routerLink="/stream">Stream</a></li>
+      <li><a *ngIf="admin" routerLink="/admin">Admin</a></li>
       <li><a><input type="file" id="selectedFile" style="display: none;" (change)="handleFiles($event)" /></a></li>
 
       <li class="flRight" *ngIf="buttons.login"><a routerLink="/login">Login</a></li>
