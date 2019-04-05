@@ -11,8 +11,9 @@ export class Job extends Print{
     private dateDone: string;
     private notes: string;
 
-    constructor(pId, amount, date, notes, filename, name, time, length, weight, price){
-        super(pId, filename, name, time, length, weight, price);
+    constructor(id, amount, date, notes, filename, name, time, length, weight, price){
+        super(-1, filename, name, time, length, weight, price);
+        this.id = id;
         this.amount = amount;
         this.date = date;
         this.notes = notes;

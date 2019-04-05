@@ -1,19 +1,24 @@
-<h1>Users</h1>
-<!-- TODO: only show users with status "User" or higher -->
-<div class="w3-card w3-hover-shadow">
-  <div (click)="show = !show" class="w3-container">
-    <h2>Oliver Benz</h2>
-  </div>
+<h1 id="prints">Users</h1>
+<select #getGroup id="group" (change)="getUsers(getGroup.value)">
+  <option *ngFor="let g of groups" value="{{ g[0] }}">{{ g[1] }}</option>
+</select>
+<br>
 
-  <div *ngIf="show" class="w3-container">
-    <div class="w3-col s6 m6 l4">
-        <h5>E-Mail: oliver.benz@outlook.com</h5>
+<div class="w3-card w3-hover-shadow" *ngFor="let u of users">
+  <div (click)="toggleCollapse(u.getId())" class="w3-container header">
+    <h4>{{u.getName()}}</h4>
+  </div>
+  <div *ngIf="checkShow(u.getId())" class="w3-container content">
+    <!-- Content Left -->
+    <div class="w3-col s6 m6 l4 left">
+      <p>{{u.getEmail()}}</p>
     </div>
-    <div class="w3-col s6 m6 l4">
-        <select id="group" #select>
-            <option *ngFor="let g of groups" value="{{ g[0] }}">{{ g[1] }}</option>
-        </select>
+
+    <!-- Content Right -->
+    <div class="w3-col s6 m6 l4 right">
+      <select id="userStatus">
+        <option *ngFor="let g of groups" value="{{ g[0] }}">{{ g[1] }}</option>
+      </select>
     </div>
-    
   </div>
 </div>

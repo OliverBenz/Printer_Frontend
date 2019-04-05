@@ -1,17 +1,33 @@
-<h1>Queue</h1>
+<h1 id="queue">Prints</h1>
+<select #getSelect id="status" (change)="getPrints(getSelect.value)">
+  <option *ngFor="let s of status" value="{{ s[0] }}">{{ s[1] }}</option>
+</select>
+<br>
 
-<div class="w3-card w3-hover-shadow">
-  <div (click)="toggleCollapse(1)" class="w3-container">
-    <h2>Filename</h2>
+<div class="w3-card w3-hover-shadow" *ngFor="let j of jobs">
+  <div (click)="toggleCollapse(j.getId())" class="w3-container header">
+    <h4 id="date">{{j.getDate()}}</h4>
+    <h4>{{j.getAmount()}} | {{j.getName()}}</h4>
   </div>
-  <div *ngIf="show" class="w3-container">
-    <div class="w3-col s6 m6 l4">
-        <h5>Information 1</h5>
+  <div *ngIf="checkShow(j.getId())" class="w3-container content">
+    <!-- Content Left -->
+    <div class="w3-col s6 m6 l4 left">
+        <h5 class="user">{{j.getUser()}}</h5>
+        <h5 class="notes">{{j.getNotes()}}</h5>
+
+        <div class="info">
+          <p>{{j.getFilename()}}</p>
+          <p>Time: {{j.getTime()}}</p>
+          <p>Length: {{j.getLength()}}</p>
+        </div>
     </div>
-    <div class="w3-col s6 m6 l4">
-        <select id="status">
-            <option *ngFor="let s of status" value="{{ s[0] }}">{{ s[1] }}</option>
-        </select>
+    
+    <!-- Content Right -->
+    <div class="w3-col s6 m6 l4 right">
+      <h5>{{j.getDateUntil()}}</h5>
+      <select id="printStatus">
+        <option *ngFor="let s of status" value="{{ s[0] }}">{{ s[1] }}</option>
+      </select>
     </div>
   </div>
 </div>

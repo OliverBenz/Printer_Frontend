@@ -68,7 +68,7 @@ export class AddComponent implements OnInit, AfterContentInit{
       let usrid: number = 0;
 
       // "+" is to cast string to number
-      let job: Job = new Job(+amount, date, notes, 0, filename, name, this.round(+time), this.round(+length), this.round(+weight), this.round(+price));
+      let job: Job = new Job(0, +amount, date, notes, filename, name, this.round(+time), this.round(+length), this.round(+weight), this.round(+price));
       job.setDateUntil(dateUntil);
 
       // let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100, notes);

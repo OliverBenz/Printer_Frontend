@@ -1,3 +1,62 @@
-#status{
+/* Site */
+#queue{
+    display: inline-block;
+    padding-right: 15px;
+}
+select{
+    border: none;
+    font-size: 16px;
+}
+.w3-card{
+    margin-bottom: 20px;
+}
+
+
+/* Header */
+.header{
+    background-color: #d3d3d3;
+}
+#date{
     float: right;
 }
+
+
+/* Content */
+.content{
+    height: 250px;
+}
+.left, .right{
+    height: 100%;
+}
+
+/* Left */
+.left{
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+}
+.user{
+    border-bottom: 1px solid grey;
+}
+.left .info{
+    /* border-top: 1px solid grey;
+    border-right: 1px solid grey; */
+    padding-top: auto;
+}
+
+
+/* Right */
+.right{
+    display: flex;
+    flex-direction: column;
+}
+.right h5{
+    margin-left: auto;
+    margin-bottom: auto;
+}
+.right select{
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+

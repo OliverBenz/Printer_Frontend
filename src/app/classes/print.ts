@@ -8,8 +8,7 @@ export class Print{
     private weight: number;
     private price: number;
 
-    constructor(id, filename, name, time, length, weight, price){
-        this.pId = id;
+    constructor(pId, filename, name, time, length, weight, price){
         this.filename = filename;
         this.name = name;
         this.time = time;

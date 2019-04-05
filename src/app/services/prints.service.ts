@@ -1,3 +1,4 @@
+import { User } from './../classes/user';
 import { Job } from './../classes/job';
 import { Print } from './../classes/print';
 import { AuthService } from './auth.service';
@@ -26,6 +27,15 @@ export class PrintsService {
   // Article Normal
   private printsSource = new BehaviorSubject<any>("");
   prints = this.printsSource.asObservable();
+
+  // Admin Prints
+  private adPrintsSource = new BehaviorSubject<any>("");
+  adPrints = this.adPrintsSource.asObservable();
+
+  // Admin Users
+  private adUserSource = new BehaviorSubject<any>("");
+  adUsers = this.adUserSource.asObservable();
+
 
   constructor(
     private http: HttpClient,
@@ -94,5 +104,47 @@ export class PrintsService {
       console.log("Error");
       console.log(error);
     };
+  }
+
+  public getAdminPrints(status){
+    this.http.get<any>(this._url + "/admin/jobs/" + status + "/" + this.authService.getSessionId(), httpOptions).subscribe(data => {
+      console.log("Successful");
+      
+      var jobList: Array<Job> = [];
+      for(let i = 0; i < data.data.length; i++){
+        let a = data.data[i];
+        let job: Job = new Job(a.id, a.amount, a.date, a.notes, a.filename, a.name, a.time, a.length, a.weight, a.price);
+        job.setDateDone(a.dateDone);
+        job.setDateUntil(a.dateUntil);
+        job.setTimeReal(a.timeReal);
+        job.setStatus(a.status);
+        job.setUser(a.user);
+        
+        jobList.push(job);
+      }
+
+      this.adPrintsSource.next(jobList);
+    }, error => {
+      console.log("Get Prints failed");
+      console.log(error);
+    })
+  }
+
+  public getAdminUsers(status){
+    this.http.get<any>(this._url + "/admin/user/" + status + "/" + this.authService.getSessionId(), httpOptions).subscribe(data => {
+      console.log("Successful");
+
+      var userList: Array<User> = [];
+
+      for(let i = 0; i < data.data.length; i++){
+        let a = data.data[i];
+        userList.push(new User(a.id, a.name, a.email, a.group))
+      }
+
+      this.adUserSource.next(userList);
+    }, error => {
+      console.log("Get users failed");
+      console.log(error);
+    })
   }
 }

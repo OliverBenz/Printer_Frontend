@@ -1,3 +1,21 @@
-#group{
+/* Site */
+#prints{
+    display: inline-block;
+    padding-right: 15px;
+}
+select{
+    border: none;
+    font-size: 16px;
+}
+.w3-card{
+    margin-bottom: 20px;
+}
+
+
+/* Header */
+.header{
+    background-color: #d3d3d3;
+}
+#date{
     float: right;
 }
