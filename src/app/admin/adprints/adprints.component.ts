@@ -15,16 +15,13 @@ export class AdprintsComponent implements OnInit {
     [3, "Removed"],
     [4, "Failed"],
     [6, "Done"]
-  ]
-  constructor() {
-    
-  }
+  ];
 
-  ngOnInit() {
-  }
+  constructor() { }
+
+  ngOnInit() { }
 
   public toggleCollapse(id){
     this.show = !this.show;
   }
-
 }

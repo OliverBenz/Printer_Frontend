@@ -1,4 +1,4 @@
-import { Queue } from '../classes/queue';
+import { Print } from './../classes/print';
 import { PrintsService } from './../services/prints.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class IndexComponent implements OnInit {
   public prints = true;
 
-  public queue: Array<Queue> = [];
+  public queue: Array<Print> = [];
 
   constructor(
     private printsService: PrintsService

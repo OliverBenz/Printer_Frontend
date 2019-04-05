@@ -1,17 +1,27 @@
-export class Job{
+import { Print } from './print';
+
+export class Job extends Print{
+    private id: number;
     private user: string;
     private spoolid: number;
     private amount: number;
     private status: string;
     private date: string;
-    private date_until: string;
-    private date_done: string;
+    private dateUntil: string;
+    private dateDone: string;
     private notes: string;
 
-    constructor(amount, date, notes){
+    constructor(pId, amount, date, notes, filename, name, time, length, weight, price){
+        super(pId, filename, name, time, length, weight, price);
         this.amount = amount;
         this.date = date;
         this.notes = notes;
+    }
+    public getId(): number{
+        return this.id;
+    }
+    public setId(id: number): void{
+        this.id = id;
     }
 
     public getUser(): string{
@@ -54,20 +64,20 @@ export class Job{
         this.date = date;
     }
 
-    public getDate_until(): string{
-        return this.date_until;
+    public getDateUntil(): string{
+        return this.dateUntil;
     }
 
-    public setDate_until(date_until: string): void{
-        this.date_until = date_until;
+    public setDateUntil(dateUntil: string): void{
+        this.dateUntil = dateUntil;
     }
 
-    public getDate_done(): string{
-        return this.date_done;
+    public getDateDone(): string{
+        return this.dateDone;
     }
 
-    public setDate_done(date_done: string): void{
-        this.date_done = date_done;
+    public setDateDone(dateDone: string): void{
+        this.dateDone = dateDone;
     }
 
     public getNotes(): string{

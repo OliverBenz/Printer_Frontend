@@ -1,5 +1,6 @@
+import { Print } from './../classes/print';
+import { Job } from './../classes/job';
 import { HelpersService } from './../services/helpers.service';
-import { Print } from './../classes/prints';
 import { PrintsService } from './../services/prints.service';
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
@@ -55,7 +56,7 @@ export class AddComponent implements OnInit, AfterContentInit{
       // Filename:     usrid-amount-date-date_until-filename-name-time-length-weight-price
       var amount = (<HTMLInputElement>document.getElementById("amount")).value;
       var date = new Date().toISOString().split("T")[0];
-      var date_until = (<HTMLInputElement>document.getElementById("date_until")).value;
+      var dateUntil = (<HTMLInputElement>document.getElementById("date_until")).value;
       var filename = (<HTMLInputElement>document.getElementById("filename")).value;
       var name = (<HTMLInputElement>document.getElementById("name")).value;
       var time = (<HTMLInputElement>document.getElementById("time")).value;
@@ -67,15 +68,22 @@ export class AddComponent implements OnInit, AfterContentInit{
       let usrid: number = 0;
 
       // "+" is to cast string to number
-      let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100, notes);
+      let job: Job = new Job(+amount, date, notes, 0, filename, name, this.round(+time), this.round(+length), this.round(+weight), this.round(+price));
+      job.setDateUntil(dateUntil);
+
+      // let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100, notes);
  
-      this.printsService.postPrint(print, this.file);
+      this.printsService.postPrint(job, this.file);
       this.clearInput();
     }
     else{
       alert("Login Needed");
     }
 
+  }
+
+  private round(val){
+    return Math.round(val * 100) / 100
   }
 
   private formatTime(str){

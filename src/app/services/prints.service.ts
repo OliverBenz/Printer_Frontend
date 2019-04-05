@@ -1,5 +1,6 @@
-import { Queue } from '../classes/queue';
-import { History } from '../classes/history';
+import { Job } from './../classes/job';
+import { Print } from './../classes/print';
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -28,40 +29,49 @@ export class PrintsService {
 
   constructor(
     private http: HttpClient,
-    private helpersService: HelpersService
+    private helpersService: HelpersService,
+    private authService: AuthService
   ) { }
 
   public getQueue(){
     let url = this._url + "/print/to-do";
 
     this.http.get<any>(url, httpOptions).subscribe(data => {
-      var queueList: Array<Queue> = [];
+      var printList: Array<Print> = [];
       
       for(let i = 0; i < data.data.length; i++){
-        queueList.push(new Queue(data.data[i]))
+        let a = data.data[i];
+        let print: Print = new Print(a.id, a.filename, a.name, a.time, a.length, a.weight, a.price);
+        printList.push(print);
       }
-      this.queueSource.next(queueList);
-    })
+      this.queueSource.next(printList);
+    });
   }
 
   public getUserPrints(value: string, sessionId: string){
     let url = this._url + "/job/" + value + "/" + sessionId;
 
     this.http.get<any>(url, httpOptions).subscribe(data => {
-      var historyList: Array<History> = [];
+      var jobList: Array<Job> = [];
       console.log(data);
       for(let i = 0; i < data.data.length; i++){
-        historyList.push(new History(data.data[i]));
+        let a = data.data[i];
+        let job: Job = new Job(a.id, a.amount, a.date, a.notes, a.filename, a.name, a.time, a.length, a.weight, a.price);
+        job.setTimeReal(a.timeReal);
+        job.setDateUntil(a.dateUntil);
+        job.setDateDone(a.dateDone);
+
+        jobList.push(job);
       }
 
-      this.printsSource.next(historyList);
+      this.printsSource.next(jobList);
     });
   }
 
   public postPrint(obj, file){
     // Filename:     sessionId-amount-date-date_till-filename-name-time-length-weight-price
 
-    let body = JSON.parse('{"sessionId": "' + obj.getSessionId() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '", "notes": "' + obj.getNotes() + '"}');
+    let body = JSON.parse('{"sessionId": "' + this.authService.getSessionId() + '", "amount": "' + obj.getAmount() + '", "date": "' + obj.getDate() + '", "date_until": "' + obj.getDateUntil() + '", "filename": "' + obj.getFilename() + '", "name": "' + obj.getName() + '", "time": "' + obj.getTime() + '", "length": "' + obj.getLength() + '", "weight": "' + obj.getWeight() + '", "price": "' + obj.getPrice() + '", "notes": "' + obj.getNotes() + '"}');
     
     this.http.post<any>(this._url + "/job", body, httpOptions).subscribe(resp => {
       console.log("Post Success");
