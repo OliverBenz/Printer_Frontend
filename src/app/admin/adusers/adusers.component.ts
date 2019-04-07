@@ -41,6 +41,15 @@ export class AdusersComponent implements OnInit {
     }
     this.printsService.getAdminUsers(val);
   }
+  public changeGroup(id, val){
+    var groupname = "" 
+    for(let i = 0; i < this.groups.length; i++){
+      if (this.groups[i][0] == val){
+        groupname = this.groups[i][1]
+      }
+    }
+    alert(id + groupname);
+  }
   
   public toggleCollapse(id){
     for(let i = 0; i < this.show.length; i++){

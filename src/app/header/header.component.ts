@@ -58,9 +58,8 @@ export class HeaderComponent implements OnInit {
   }
 
   private checkGroup(){
-    let body = JSON.parse('{"sessionId": "' + this.authService.getSessionId() + '"}');
-    this.http.post<any>("http://127.0.0.1:5000/user/group", body, httpOptions).subscribe(data => {
-      if(data.data == "Admin"){
+    this.http.get<any>("http://127.0.0.1:5000/user/group/" + this.authService.getSessionId(), httpOptions).subscribe(data => {
+      if(data.data == "Administrator"){
         this.admin = true;
       }
     });
