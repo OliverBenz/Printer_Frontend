@@ -1,0 +1,8 @@
+<div id="changePW">
+  <h1>Change Password</h1>
+  <input #pwOld class="w3-input" placeholder="Old Password" type="password">
+  <input #pwNew class="w3-input" placeholder="New Password" type="password">
+  <input #pwNew1 class="w3-input" placeholder="New Password" type="password">
+    
+  <button class="w3-button" (click)="changePassword(pwOld.value, pwNew.value, pwNew1.value)">Submit</button>
+</div>

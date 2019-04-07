@@ -24,6 +24,7 @@ import { RegisterComponent } from './login-site/register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdprintsComponent } from './admin/adprints/adprints.component';
 import { AdusersComponent } from './admin/adusers/adusers.component';
+import { AccsettingsComponent } from './account/accsettings/accsettings.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdusersComponent } from './admin/adusers/adusers.component';
     RegisterComponent,
     AdminComponent,
     AdprintsComponent,
-    AdusersComponent
+    AdusersComponent,
+    AccsettingsComponent
   ],
   imports: [
     BrowserModule,

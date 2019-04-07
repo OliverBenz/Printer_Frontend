@@ -45,4 +45,15 @@ export class LoginService {
       console.log(error);
     })
   }
+
+  public changePassword(pwOld, pwNew){
+    let body = JSON.parse('{"passwordOld": "' + pwOld + '", "passwordNew": "' + pwNew + '", "sessionId": "' + this.authService.getSessionId() + '"}');
+    this.http.post<any>(this._url + "/user/changepw", body, httpOptions).subscribe(res => {
+      this.authService.storeSessionId(res.data);
+      this.router.navigate(['account']);
+      window.location.reload();
+    }, error => {
+      console.log(error.error.data);
+    });
+  }
 }

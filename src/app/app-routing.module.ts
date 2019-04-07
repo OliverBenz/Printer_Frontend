@@ -7,6 +7,7 @@ import { AccountComponent } from './account/account.component';
 import { AccstatisticsComponent } from './account/accstatistics/accstatistics.component';
 import { AccfinanceComponent } from './account/accfinance/accfinance.component';
 import { AccprintsComponent } from './account/accprints/accprints.component';
+import { AccsettingsComponent } from './account/accsettings/accsettings.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdprintsComponent } from './admin/adprints/adprints.component';
 import { AdusersComponent } from './admin/adusers/adusers.component';
@@ -32,9 +33,10 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, children: [
     { path: '', redirectTo: 'prints', pathMatch: 'full' },
     
-    { path: 'prints', component: AccprintsComponent},
-    { path: 'statistics', component: AccstatisticsComponent},
-    { path: 'finance', component: AccfinanceComponent},
+    { path: 'prints', component: AccprintsComponent },
+    { path: 'statistics', component: AccstatisticsComponent },
+    { path: 'finance', component: AccfinanceComponent },
+    { path: 'settings', component: AccsettingsComponent },
 
     { path: '**', redirectTo: 'history', pathMatch: 'full' }
   ]},
