@@ -17,7 +17,6 @@ import { AccfinanceComponent } from './account/accfinance/accfinance.component';
 import { StreamComponent } from './stream/stream.component';
 import { AccprintsComponent } from './account/accprints/accprints.component';
 
-import { FileSelectDirective } from 'ng2-file-upload';
 import { FormsModule } from '@angular/forms';
 import { LoginSiteComponent } from './login-site/login-site.component';
 import { RegisterComponent } from './login-site/register/register.component';
@@ -39,7 +38,6 @@ import { AccsettingsComponent } from './account/accsettings/accsettings.componen
     AccfinanceComponent,
     StreamComponent,
     AccprintsComponent,
-    FileSelectDirective,
     LoginSiteComponent,
     RegisterComponent,
     AdminComponent,

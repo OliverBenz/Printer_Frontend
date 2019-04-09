@@ -18,7 +18,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PrintsService {
-  private _url = "http://127.0.0.1:5000"
+  private _url = "http://46.101.150.204:3004"
 
   // Article Normal
   private queueSource = new BehaviorSubject<any>("");
@@ -133,7 +133,6 @@ export class PrintsService {
   public getAdminUsers(status){
     this.http.get<any>(this._url + "/admin/user/" + status + "/" + this.authService.getSessionId(), httpOptions).subscribe(data => {
       console.log("Successful");
-
       var userList: Array<User> = [];
 
       for(let i = 0; i < data.data.length; i++){

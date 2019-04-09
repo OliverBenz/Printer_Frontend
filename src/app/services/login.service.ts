@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class LoginService {
 
-  private _url = "http://127.0.0.1:5000";
+  private _url = "http://46.101.150.204:3004";
 
   constructor(
     private router: Router,

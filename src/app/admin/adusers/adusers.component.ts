@@ -14,7 +14,7 @@ export class AdusersComponent implements OnInit {
     [0, "Registered"],
     [1, "User"],
     [2, "Maintainer"],
-    [3, "Admin"]
+    [3, "Administrator"]
   ];
   constructor(
     private printsService: PrintsService
@@ -44,8 +44,8 @@ export class AdusersComponent implements OnInit {
   public changeGroup(id, val){
     var groupname = "" 
     for(let i = 0; i < this.groups.length; i++){
-      if (this.groups[i][0] == val){
-        groupname = this.groups[i][1]
+      if (this.groups[i][0] == id){
+        // groupname = this.groups[i][1];
       }
     }
     alert(id + groupname);
