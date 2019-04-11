@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { LinksService } from './links.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,14 +15,16 @@ const httpOptions = {
 })
 export class LoginService {
 
-  private _url = "http://134.209.224.110:3004";
-  // private _url = "http://127.0.0.1:3004";
-  
+  private _url = "";
+
   constructor(
     private router: Router,
     private http: HttpClient,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private linksService: LinksService,
+    ) {
+    this._url = this.linksService.getUrl();
+  }
 
   public login(email, password){
     let url = this._url + "/user/login";

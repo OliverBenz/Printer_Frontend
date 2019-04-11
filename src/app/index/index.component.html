@@ -7,14 +7,14 @@
       <th>Length</th>
       <th>Weight</th>
       <th>Time</th>
-      <th>Price</th>
+      <!-- <th>Price</th> -->
     </tr>
     <tr *ngFor="let q of queue" id="{{ q.getId() }}">
       <td id="name">{{ q.getName() }}</td>
       <td>{{ q.getLength() }} m</td>
       <td>{{ q.getWeight() }} g</td>
       <td>{{ q.getTime() }} h</td>
-      <td>{{ q.getPrice() }} €</td>
+      <!-- <td>{{ q.getPrice() }} €</td> -->
     </tr>
   </table>
 

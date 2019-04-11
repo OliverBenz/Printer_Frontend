@@ -12,7 +12,8 @@
         <!-- <th>Length</th> -->
         <!-- <th>Weight</th> -->
         <th>Time</th>
-        <th>Price</th>
+        <!-- <th>Price</th> -->
+        <th></th>
       </tr>
       
       <!-- TODO: Onclick: Expand and show more data about print -->
@@ -27,7 +28,8 @@
         <!-- <td>{{ h.getLength() }} m</td> -->
         <!-- <td>{{ h.getWeight() }} g</td> -->
         <td id="time">{{ h.getTime() }} h</td>
-        <td id="price">{{ h.getPrice() }} €</td>
+        <!-- <td id="price">{{ h.getPrice() }} €</td> -->
+        <td><button (click)="removePrint(h.getId())">Remove</button></td>
       </tr>
     </table>
 </div>

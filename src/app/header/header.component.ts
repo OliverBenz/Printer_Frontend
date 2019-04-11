@@ -1,14 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HelpersService } from './../services/helpers.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Content-Type": "application/json"
-  })
-};
 
 @Component({
   selector: 'app-header',
@@ -28,8 +21,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private helpersService: HelpersService,
-    private router: Router,
-    private http: HttpClient
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -46,11 +38,11 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout(){
-    this.router.navigate(["/index"]);
     this.authService.removeSessionId();
+    this.router.navigate(["/index"]);
     
+    this.checkLogin();
   }
-
   public handleFiles(event){
     this.helpersService.fileSource.next(<File>event.target.files[0]);
     this.router.navigate(["/add"]);
@@ -63,25 +55,13 @@ export class HeaderComponent implements OnInit {
     console.log(filter);
   }
   private checkLogin(){
-
     if (this.authService.checkSessionId()){
       this.buttons.login = false;
       this.buttons.account = true;
-      this.checkGroup();
     }
     else{
       this.buttons.login = true;
       this.buttons.account = false;
     }
-  }
-
-  private checkGroup(){
-    let url = "http://134.209.224.110:3004/user/group";
-    // let url = "http://127.0.0.1:3004/user/group/";
-    this.http.get<any>(url + this.authService.getSessionId(), httpOptions).subscribe(data => {
-      if(data.data == "Administrator"){
-        this.admin = true;
-      }
-    });
   }
 }

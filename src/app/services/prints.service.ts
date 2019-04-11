@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject } from 'rxjs';
 import { HelpersService } from './helpers.service';
+import { LinksService } from './links.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,8 +19,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PrintsService {
-  private _url = "http://134.209.224.110:3004"
-  // private _url = "http://127.0.0.1:3004";
+  private _url = "";
 
   // Article Normal
   private queueSource = new BehaviorSubject<any>("");
@@ -40,8 +40,11 @@ export class PrintsService {
   constructor(
     private http: HttpClient,
     private helpersService: HelpersService,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private linksService: LinksService
+  ) {
+    this._url = this.linksService.getUrl();
+  }
 
   public getQueue(){
     let url = this._url + "/print/to-do";

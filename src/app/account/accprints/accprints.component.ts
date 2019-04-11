@@ -46,4 +46,7 @@ export class AccprintsComponent implements OnInit {
   public getData(value){
     this.printsService.getUserPrints(value, this.authService.getSessionId());
   }
+  public removePrint(id){
+    alert(id);
+  }
 }
