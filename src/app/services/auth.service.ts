@@ -14,6 +14,7 @@ export class AuthService {
   public storeSessionId(sessionId: string){
     if(!this.checkSessionId()){
       this.cookieService.set('sessionId', sessionId);
+      // location.reload();
     }
     else{
       return;
@@ -35,6 +36,7 @@ export class AuthService {
 
   public removeSessionId(){
     this.cookieService.delete('sessionId');
+    // location.reload();
   }
 
 }

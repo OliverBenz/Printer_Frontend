@@ -29,8 +29,7 @@ export class LoginService {
 
     this.http.post<any>(url, body, httpOptions).subscribe(result => {
       this.authService.storeSessionId(result.data);
-      this.router.navigate(['account']);
-      window.location.reload();
+      this.router.navigate(['/account']);
     }, error => {
       alert(error.error.data);
     });
@@ -52,9 +51,6 @@ export class LoginService {
     
     this.http.post<any>(this._url + "/user/changepw", body, httpOptions).subscribe(res => {
       this.authService.storeSessionId(res.data);
-      console.log(res.data);
-      this.router.navigate(['account']);
-      window.location.reload();
     }, error => {
       console.log(error.error.data);
     });

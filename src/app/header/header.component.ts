@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     searchInput: "hidden"
   }
   public buttons = {
-      login: true,
+      login: false,
       account: false
   }
   constructor(
@@ -46,8 +46,9 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout(){
+    this.router.navigate(["/index"]);
     this.authService.removeSessionId();
-    window.location.reload();
+    
   }
 
   public handleFiles(event){
@@ -58,7 +59,11 @@ export class HeaderComponent implements OnInit {
   public clickFileButton(){
     document.getElementById('selectedFile').click();
   }
+  public sendFilter(filter){
+    console.log(filter);
+  }
   private checkLogin(){
+
     if (this.authService.checkSessionId()){
       this.buttons.login = false;
       this.buttons.account = true;

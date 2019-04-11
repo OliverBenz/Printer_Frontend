@@ -8,6 +8,7 @@
       <h1 class="w3-bar-item">3D Manager</h1>
       <button class="w3-hover-opacity w3-bar-item" routerLink="/index">Home ☰</button>
       <button class="w3-hover-opacity w3-bar-item" routerLink="/login" *ngIf="buttons.login">Login</button>
+      <button class="w3-hover-opacity w3-bar-item" routerLink="/index" *ngIf="buttons.account" (click)="logout()">Logout</button>
       <button class="w3-hover-opacity w3-bar-item" routerLink="/account" *ngIf="buttons.account">Account</button>
   </div>
 
@@ -20,14 +21,14 @@
           <button class="w3-hover-opacity" (click)="changeSeachInput()">Search Print</button>
           <button class="w3-hover-opacity" (click)="clickFileButton()">Add Print</button><br>
       
-          <span [style.visibility]="page.searchInput"><input #filter id="filter" type="text" class="w3-input" placeholder="Insert print name.."(keyup.enter)="SendFilter(filter.value)"></span>
+          <span [style.visibility]="page.searchInput"><input #filter id="filter" type="text" class="w3-input" placeholder="Insert print name.."(keyup.enter)="sendFilter(filter.value)"></span>
       </div>
   </div>
   
   <!-- Footer -->
   <div id="footer">
       <input type="file" id="selectedFile" style="display: none;" (change)="handleFiles($event)" />
-      <p id="version">Version 2.2</p>
+      <p id="version">Version 2.3</p>
   </div>
 </div>
 
@@ -45,7 +46,7 @@
 
       <li class="flRight" *ngIf="buttons.login"><a routerLink="/login">Login</a></li>
       <li class="flRight" *ngIf="buttons.account"><a routerLink="/account">Account</a></li>
-      <li class="flRight" *ngIf="buttons.account" (click)="logout()"><a routerLink="/index">Logout</a></li>
+      <li class="flRight" *ngIf="buttons.account"><a routerLink="/index">Logout</a></li>
     </ul>
   </div>
 </div> -->
