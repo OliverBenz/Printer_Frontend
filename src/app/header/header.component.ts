@@ -17,9 +17,13 @@ const httpOptions = {
 })
 export class HeaderComponent implements OnInit {
   public admin = false;
+
+  public page = {
+    searchInput: "hidden"
+  }
   public buttons = {
-    login: true,
-    account: false
+      login: true,
+      account: false
   }
   constructor(
     private authService: AuthService,
@@ -30,6 +34,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.checkLogin();
+  }
+  public changeSeachInput(){
+    if(this.page.searchInput == "hidden"){
+      this.page.searchInput = "visible";
+    }
+    else if(this.page.searchInput == "visible"){
+      this.page.searchInput = "hidden";
+
+    }
   }
 
   public logout(){
@@ -58,7 +71,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private checkGroup(){
-    this.http.get<any>("http://127.0.0.1:5000/user/group/" + this.authService.getSessionId(), httpOptions).subscribe(data => {
+    let url = "http://134.209.224.110:3004/user/group";
+    // let url = "http://127.0.0.1:3004/user/group/";
+    this.http.get<any>(url + this.authService.getSessionId(), httpOptions).subscribe(data => {
       if(data.data == "Administrator"){
         this.admin = true;
       }

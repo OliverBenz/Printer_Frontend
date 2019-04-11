@@ -1,4 +1,109 @@
-/* General */
+#background{
+    /* background: url("../../assets/images/headerBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;  */
+    background-size: 100% 500px;
+    
+    color: white;
+    /* Hide overflow on top */
+    overflow: hidden;
+    display: block;
+    height: 500px;
+
+    margin-bottom: 50px;
+}
+#background video{
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#header{
+    position: absolute;
+    top: 0;
+}
+#content{
+    position: absolute;
+    top: 150px;
+    padding-left: 80px;
+}
+#header button{
+    background-color: transparent;
+    
+    font-size: 20px;
+    color: white;
+
+    border: none;
+    float: right;
+    cursor: pointer;
+  }
+#navigation{
+    margin-top: 20px;
+}
+#navigation button {
+    color: white;
+    background-color: Transparent;
+    
+    cursor:pointer;
+    overflow: hidden;
+  
+    /* Border */
+    border: 1px solid black;
+    border-color: white;
+  
+    /* Spacing between buttons */
+    margin-right: 10px;
+    margin-bottom: 5px;
+    
+    /* Size */
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#filter{
+    background-color: Transparent;
+    color: white;
+    width: 300px;
+}
+#footer{
+    position: absolute;
+    top: 450px;
+    right: 10px;    
+}
+/* --- Responsive Features --- */
+@media only screen and (max-width: 700px){
+    #background video{
+        width: auto;
+        height: 500px;
+        /* transform: translateX(-20%); */
+    }
+    #content{
+        padding-left: 30px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    #header{
+        margin-bottom: 30px;
+    }
+    #content{
+        padding-right: 50px;
+    }
+    #content h5{
+        font-size: 12pt;
+    }
+    #content h2{
+        font-size: 16pt;
+    }
+}
+
+
+
+
+
+/*
 .flRight{
     float: right;
 }
@@ -9,37 +114,70 @@
 }
 
 
-/* Background */
 #background{
     background-image: url("../../assets/images/background.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
-    background-position-y: 25%;
-    /* background-position: left; */
+    background-size: auto 400px;
     
-    position: relative;
-
     color: white;
     overflow: hidden;
     display: block;
-    height: 50vh;
-    /* margin-bottom: 50px; */
-    /* width: 100%; */
+    height: 400px;
+}
+#content{
+    position: absolute;
+    top: 150px;
+    padding-left: 80px;
+}
+#header button{
+    background-color: transparent;
+    
+    font-size: 20px;
+    color: white;
+
+    border: none;
+    float: right;
+    cursor: pointer;
+  }
+#navigation{
+    margin-top: 20px;
+}
+#navigation button {
+    color: white;
+    background-color: Transparent;
+    
+    cursor:pointer;
+    overflow: hidden;
+  
+    border: 1px solid black;
+    border-color: white;
+  
+    margin-right: 10px;
+    margin-bottom: 5px;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#filter{
+    background-color: Transparent;
+    color: white;
+    width: 300px;
 }
 #background h1{
     margin-left: 20px;
     margin-top: 40px;
 }
-/* Navbar */
 #navbar{
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    /* margin-bottom: 50px; */
-    /* float: bottom; */
 
 }
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -59,7 +197,7 @@ li a {
     text-decoration: none;
 }
   
-  /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
 }
+*/

@@ -1,5 +1,38 @@
 <div id="background">
-  <h1>3D Printersite</h1>
+  <video autoplay muted>
+      <source src="../../assets/Background.mp4" type="video/mp4"> 
+  </video>
+
+  <!-- Header -->
+  <div id="header" class="w3-bar">
+      <h1 class="w3-bar-item">3D Manager</h1>
+      <button class="w3-hover-opacity w3-bar-item" routerLink="/index">Home ☰</button>
+      <button class="w3-hover-opacity w3-bar-item" routerLink="/login" *ngIf="buttons.login">Login</button>
+      <button class="w3-hover-opacity w3-bar-item" routerLink="/account" *ngIf="buttons.account">Account</button>
+  </div>
+
+  <!-- Content -->
+  <div id="content" class="w3-col s12 m8 l6">
+      <h5>Welcome to not Accountbook</h5>
+      <h2>I know the design is the same but I swear the page is different</h2>
+
+      <div id="navigation">
+          <button class="w3-hover-opacity" (click)="changeSeachInput()">Search Print</button>
+          <button class="w3-hover-opacity" (click)="clickFileButton()">Add Print</button><br>
+      
+          <span [style.visibility]="page.searchInput"><input #filter id="filter" type="text" class="w3-input" placeholder="Insert print name.."(keyup.enter)="SendFilter(filter.value)"></span>
+      </div>
+  </div>
+  
+  <!-- Footer -->
+  <div id="footer">
+      <input type="file" id="selectedFile" style="display: none;" (change)="handleFiles($event)" />
+      <p id="version">Version 2.2</p>
+  </div>
+</div>
+
+<!-- <div id="background">
+  <h1>3D Druckerverwaltung</h1>
 
   <div id="navbar">
     <ul>
@@ -15,4 +48,4 @@
       <li class="flRight" *ngIf="buttons.account" (click)="logout()"><a routerLink="/index">Logout</a></li>
     </ul>
   </div>
-</div>
+</div> -->

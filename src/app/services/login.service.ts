@@ -14,8 +14,9 @@ const httpOptions = {
 })
 export class LoginService {
 
-  private _url = "http://46.101.150.204:3004";
-
+  private _url = "http://134.209.224.110:3004";
+  // private _url = "http://127.0.0.1:3004";
+  
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -48,8 +49,10 @@ export class LoginService {
 
   public changePassword(pwOld, pwNew){
     let body = JSON.parse('{"passwordOld": "' + pwOld + '", "passwordNew": "' + pwNew + '", "sessionId": "' + this.authService.getSessionId() + '"}');
+    
     this.http.post<any>(this._url + "/user/changepw", body, httpOptions).subscribe(res => {
       this.authService.storeSessionId(res.data);
+      console.log(res.data);
       this.router.navigate(['account']);
       window.location.reload();
     }, error => {

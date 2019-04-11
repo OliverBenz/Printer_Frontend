@@ -18,7 +18,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PrintsService {
-  private _url = "http://46.101.150.204:3004"
+  private _url = "http://134.209.224.110:3004"
+  // private _url = "http://127.0.0.1:3004";
 
   // Article Normal
   private queueSource = new BehaviorSubject<any>("");
@@ -35,7 +36,6 @@ export class PrintsService {
   // Admin Users
   private adUserSource = new BehaviorSubject<any>("");
   adUsers = this.adUserSource.asObservable();
-
 
   constructor(
     private http: HttpClient,
@@ -107,7 +107,7 @@ export class PrintsService {
   }
 
   public getAdminPrints(status){
-    this.http.get<any>(this._url + "/admin/jobs/" + status + "/" + this.authService.getSessionId(), httpOptions).subscribe(data => {
+    this.http.get<any>(this._url + "/admin/job/" + status + "/" + this.authService.getSessionId(), httpOptions).subscribe(data => {
       console.log("Successful");
       
       var jobList: Array<Job> = [];
