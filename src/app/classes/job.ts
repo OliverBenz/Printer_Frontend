@@ -12,7 +12,7 @@ export class Job extends Print{
     private notes: string;
 
     constructor(id, amount, date, notes, filename, name, time, length, weight){
-        super(-1, filename, name, time, length, weight);
+        super(filename, name, time, length, weight);
         this.id = id;
         this.amount = amount;
         this.date = date;

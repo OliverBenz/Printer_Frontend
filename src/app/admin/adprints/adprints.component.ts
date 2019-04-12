@@ -1,3 +1,4 @@
+import { Job } from './../../classes/job';
 import { PrintsService } from './../../services/prints.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adprints.component.css']
 })
 export class AdprintsComponent implements OnInit {
-  public jobs = [ ];
+  public jobs: Array<Job> = [];
   public show = [];
   public status = [
     [0, "To Do"],
@@ -30,7 +31,7 @@ export class AdprintsComponent implements OnInit {
         this.jobs = data;
         console.log(this.jobs);
         for(let i = 0; i < this.jobs.length; i++){
-          this.show.push([this.jobs[i].id, false]);
+          this.show.push([this.jobs[i].getId(), false]);
         }
       }
     });

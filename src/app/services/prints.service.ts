@@ -54,7 +54,7 @@ export class PrintsService {
       
       for(let i = 0; i < data.data.length; i++){
         let a = data.data[i];
-        let print: Print = new Print(a.id, a.filename, a.name, a.time, a.length, a.weight);
+        let print: Print = new Print(a.filename, a.name, a.time, a.length, a.weight);
         printList.push(print);
       }
       this.queueSource.next(printList);
@@ -69,7 +69,7 @@ export class PrintsService {
       console.log(data);
       for(let i = 0; i < data.data.length; i++){
         let a = data.data[i];
-        let job: Job = new Job(a.id, a.amount, a.date, a.notes, a.filename, a.name, a.time, a.length, a.weight);
+        let job: Job = new Job(a.jobId, a.amount, a.date, a.notes, a.filename, a.name, a.time, a.length, a.weight);
         job.setTimeReal(a.timeReal);
         job.setDateUntil(a.dateUntil);
         job.setDateDone(a.dateDone);
@@ -116,7 +116,8 @@ export class PrintsService {
       var jobList: Array<Job> = [];
       for(let i = 0; i < data.data.length; i++){
         let a = data.data[i];
-        let job: Job = new Job(a.id, a.amount, a.date, a.notes, a.filename, a.name, a.time, a.length, a.weight);
+        let job: Job = new Job(a.jobId, a.amount, a.date, a.notes, a.filename, a.name, a.time, a.length, a.weight);
+        
         job.setDateDone(a.dateDone);
         job.setDateUntil(a.dateUntil);
         job.setTimeReal(a.timeReal);
@@ -150,8 +151,8 @@ export class PrintsService {
     })
   }
 
-  public changeStatus(status, filename, date){
-    let body = JSON.parse('{"sessionId": "' + this.authService.getSessionId() + '", "filename": "' + filename + '", "date": "' + date + '", "status": "' + status + '"}');
+  public changeStatus(status, id){
+    let body = JSON.parse('{"sessionId": "' + this.authService.getSessionId() + '", "jobId": "' + id + '", "status": "' + status + '"}');
     
     this.http.put<any>(this._url + "/job", body, httpOptions).subscribe(res => {
       console.log(res);

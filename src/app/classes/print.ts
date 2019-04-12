@@ -1,5 +1,4 @@
 export class Print{
-    private pId: number;
     private filename: string;
     private name: string;
     private time: number;
@@ -8,19 +7,13 @@ export class Print{
     private weight: number;
     private price: number;
 
-    constructor(pId, filename, name, time, length, weight){
+    constructor(filename, name, time, length, weight){
         this.filename = filename;
         this.name = name;
         this.time = time;
         this.length = length;
         this.weight = weight;
         // this.price = price;
-    }
-    public getId(): number{
-        return this.pId;
-    }
-    public setId(id: number): void{
-        this.pId = id;
     }
     public getFilename(): string{
         return this.filename;

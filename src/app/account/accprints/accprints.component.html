@@ -13,7 +13,7 @@
         <!-- <th>Weight</th> -->
         <th>Time</th>
         <!-- <th>Price</th> -->
-        <th></th>
+        <th *ngIf="button.show"></th>
       </tr>
       
       <!-- TODO: Onclick: Expand and show more data about print -->
@@ -29,7 +29,7 @@
         <!-- <td>{{ h.getWeight() }} g</td> -->
         <td id="time">{{ h.getTime() }} h</td>
         <!-- <td id="price">{{ h.getPrice() }} €</td> -->
-        <td><button (click)="changePrint(h.getFilename(), h.getDate())">Remove</button></td>
+        <td *ngIf="button.show"><button (click)="changePrint(button.value, h.getId())">{{button.value}}</button></td>
       </tr>
     </table>
 </div>

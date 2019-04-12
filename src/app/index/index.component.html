@@ -9,7 +9,7 @@
       <th>Time</th>
       <!-- <th>Price</th> -->
     </tr>
-    <tr *ngFor="let q of queue" id="{{ q.getId() }}">
+    <tr *ngFor="let q of queue">
       <td id="name">{{ q.getName() }}</td>
       <td>{{ q.getLength() }} m</td>
       <td>{{ q.getWeight() }} g</td>

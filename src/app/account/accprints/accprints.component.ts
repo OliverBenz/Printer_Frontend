@@ -1,3 +1,4 @@
+import { Job } from './../../classes/job';
 import { AuthService } from './../../services/auth.service';
 import { PrintsService } from './../../services/prints.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccprintsComponent implements OnInit {
 
-  public history: Array<History> = [];
+  public history: Array<Job> = [];
   public historyExists = true;
 
   public selections = [
@@ -21,9 +22,9 @@ export class AccprintsComponent implements OnInit {
   ];
 
   public button = {
-    "value": "Remove"
+    "value": "Remove",
+    "show": true
   }
-
   constructor(
     private printsService: PrintsService,
     private authService: AuthService
@@ -49,10 +50,38 @@ export class AccprintsComponent implements OnInit {
 
   public getData(value){
     this.printsService.getUserPrints(value, this.authService.getSessionId());
+    
+    // Show Button
+    if(value != "removed" && value != "to-do"){
+      this.button.show = false;
+    }
+    else{
+      this.button.show = true;
+    }
+    // Button Value
+    if(value == "removed"){
+      this.button.value = "Add Print"
+    }
+    if(value == "to-do"){
+      this.button.value = "Remove"
+    }
   }
 
-  public changePrint(filename, date){
-    this.printsService.changeStatus("Removed", filename, date)
-    console.log(this.history);
+  public changePrint(value, id){
+    if(value == "Add Print"){
+      value = "To Do";
+    }
+    else if(value == "Remove"){
+      value = "Removed";
+    }
+
+    for(let i = 0; i < this.history.length; i++){
+      if(this.history[i].getId() == id){
+        this.history.splice(i, 1);
+      }
+    }
+
+    console.log(id);
+    this.printsService.changeStatus(value, id)
   }
 }
