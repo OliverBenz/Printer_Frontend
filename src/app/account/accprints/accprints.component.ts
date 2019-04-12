@@ -20,6 +20,10 @@ export class AccprintsComponent implements OnInit {
     ["Done", "done"]
   ];
 
+  public button = {
+    "value": "Remove"
+  }
+
   constructor(
     private printsService: PrintsService,
     private authService: AuthService
@@ -46,7 +50,9 @@ export class AccprintsComponent implements OnInit {
   public getData(value){
     this.printsService.getUserPrints(value, this.authService.getSessionId());
   }
-  public removePrint(id){
-    alert(id);
+
+  public changePrint(filename, date){
+    this.printsService.changeStatus("Removed", filename, date)
+    console.log(this.history);
   }
 }

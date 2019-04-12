@@ -29,7 +29,7 @@
         <!-- <td>{{ h.getWeight() }} g</td> -->
         <td id="time">{{ h.getTime() }} h</td>
         <!-- <td id="price">{{ h.getPrice() }} €</td> -->
-        <td><button (click)="removePrint(h.getId())">Remove</button></td>
+        <td><button (click)="changePrint(h.getFilename(), h.getDate())">Remove</button></td>
       </tr>
     </table>
 </div>

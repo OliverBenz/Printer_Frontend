@@ -11,8 +11,8 @@ export class Job extends Print{
     private dateDone: string;
     private notes: string;
 
-    constructor(id, amount, date, notes, filename, name, time, length, weight, price){
-        super(-1, filename, name, time, length, weight, price);
+    constructor(id, amount, date, notes, filename, name, time, length, weight){
+        super(-1, filename, name, time, length, weight);
         this.id = id;
         this.amount = amount;
         this.date = date;
@@ -24,39 +24,30 @@ export class Job extends Print{
     public setId(id: number): void{
         this.id = id;
     }
-
     public getUser(): string{
         return this.user;
     }
-
     public setUser(user: string): void{
         this.user = user;
     }
-
     public getSpoolid(): number{
         return this.spoolid;
     }
-
     public setSpoolid(spoolid: number): void{
         this.spoolid = spoolid;
     }
-
     public getAmount(): number{
         return this.amount;
     }
-
     public setAmount(amount: number): void{
         this.amount = amount;
     }
-
     public getStatus(): string{
         return this.status;
     }
-
     public setStatus(status: string): void{
         this.status = status;
     }
-
     public getDate(): string{
         return this.date;
     }
@@ -88,5 +79,4 @@ export class Job extends Print{
     public setNotes(notes: string): void{
         this.notes = notes;
     }
-
 }

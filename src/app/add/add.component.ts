@@ -45,7 +45,7 @@ export class AddComponent implements OnInit, AfterContentInit{
       (<HTMLInputElement>document.getElementById("time")).value = this.formatTime(obj[1]);
       (<HTMLInputElement>document.getElementById("length")).value = obj[2].replace(",", ".");
       (<HTMLInputElement>document.getElementById("weight")).value = obj[3].replace(",", ".");
-      (<HTMLInputElement>document.getElementById("price")).value = obj[4].replace(",", ".");
+      // (<HTMLInputElement>document.getElementById("price")).value = obj[4].replace(",", ".");
     }
   }
 
@@ -62,13 +62,13 @@ export class AddComponent implements OnInit, AfterContentInit{
       var time = (<HTMLInputElement>document.getElementById("time")).value;
       var length = (<HTMLInputElement>document.getElementById("length")).value;
       var weight = (<HTMLInputElement>document.getElementById("weight")).value;
-      var price = (<HTMLInputElement>document.getElementById("price")).value;
+      // var price = (<HTMLInputElement>document.getElementById("price")).value;
       var notes = (<HTMLInputElement>document.getElementById("notes")).value;
 
       let usrid: number = 0;
 
       // "+" is to cast string to number
-      let job: Job = new Job(0, +amount, date, notes, filename, name, this.round(+time), this.round(+length), this.round(+weight), this.round(+price));
+      let job: Job = new Job(0, +amount, date, notes, filename, name, this.round(+time), this.round(+length), this.round(+weight));
       job.setDateUntil(dateUntil);
 
       // let print: Print = new Print(this.authService.getSessionId(), +amount, date, date_until, filename, name, Math.round(+time * 100) / 100, Math.round(+length * 100) / 100, Math.round(+weight * 100) / 100, Math.round(+price * 100) / 100, notes);
