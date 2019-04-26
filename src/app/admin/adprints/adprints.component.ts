@@ -1,6 +1,8 @@
+// import { CommonModule } from '@angular/common';
 import { Job } from './../../classes/job';
 import { PrintsService } from './../../services/prints.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-adprints',
@@ -10,14 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class AdprintsComponent implements OnInit {
   public jobs: Array<Job> = [];
   public show = [];
-  public status = [
-    [0, "To Do"],
-    [1, "Printing"],
-    [2, "Invalid"],
-    [3, "Removed"],
-    [4, "Failed"],
-    [6, "Done"]
-  ];
+
+  public value: string = "";
 
   constructor(
     private printsService: PrintsService
@@ -25,26 +21,18 @@ export class AdprintsComponent implements OnInit {
 
   ngOnInit() {
     this.printsService.getAdminPrints("to-do");
-    
+
     this.printsService.adPrints.subscribe(data => {
       if(data){
         this.jobs = data;
-        console.log(this.jobs);
         for(let i = 0; i < this.jobs.length; i++){
           this.show.push([this.jobs[i].getId(), false]);
         }
       }
     });
   }
+
   public getPrints(val){
-    for(let i = 0; i < this.status.length; i++){
-      if(this.status[i][0] == val){
-        val = this.status[i][1];
-      }
-    }
-    if(val == "To Do"){
-      val = "to-do";
-    }
     this.printsService.getAdminPrints(val);
   }
 
@@ -52,7 +40,14 @@ export class AdprintsComponent implements OnInit {
     for(let i = 0; i < this.show.length; i++){
       if(this.show[i][0] == id){
         this.show[i][1] = !this.show[i][1];
-      } 
+
+        if(this.show[i][1] == true){
+          // FIXME: Race condition??
+          // (<HTMLSelectElement>document.getElementById("printStatus")).value = (<HTMLSelectElement>document.getElementById("status")).value;
+          this.value = (<HTMLSelectElement>document.getElementById("status")).value;
+          console.log(this.value);
+        }
+      }
     }
   }
 
@@ -63,5 +58,21 @@ export class AdprintsComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  public changeStatus(id){
+    let value = (<HTMLSelectElement>document.getElementById("printStatus")).value;
+    // TODO: Check if if still needed
+    if(value == "To Do"){
+      value = "to-do";
+    }
+
+    for(let i = 0; i < this.jobs.length; i++){
+      if(this.jobs[i].getId() == id){
+        this.jobs.splice(i, 1);
+      }
+    }
+    
+    this.printsService.changeStatus(value, id);
   }
 }

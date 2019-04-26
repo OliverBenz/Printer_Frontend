@@ -1,6 +1,11 @@
 <h1 id="queue">Prints</h1>
 <select #getSelect id="status" (change)="getPrints(getSelect.value)">
-  <option *ngFor="let s of status" value="{{ s[0] }}">{{ s[1] }}</option>
+  <option value="to-do">To Do</option>
+  <option value="printing">Printing</option>
+  <option value="invalid">Invalid</option>
+  <option value="removed">Removed</option>
+  <option value="failed">Failed</option>
+  <option value="done">Done</option>
 </select>
 <br>
 
@@ -25,9 +30,20 @@
     <!-- Content Right -->
     <div class="w3-col s6 m6 l4 right">
       <h5>{{j.getDateUntil()}}</h5>
-      <select id="printStatus">
-        <option *ngFor="let s of status" value="{{ s[0] }}">{{ s[1] }}</option>
+      <select id="printStatus" (change)="changeStatus(j.getId())" [(ngModel)]="this.value">
+        <option value="to-do">To Do</option>
+        <option value="printing">Printing</option>
+        <option value="invalid">Invalid</option>
+        <option value="removed">Removed</option>
+        <option value="failed">Failed</option>
+        <option value="done">Done</option>
       </select>
+
+
+
+      <!-- <select id="printStatus" (change)="changeStatus(j.getId())">
+        <option *ngFor="let s of status" value="{{ s[1] }}">{{ s[1] }}</option>
+      </select> -->
     </div>
   </div>
 </div>

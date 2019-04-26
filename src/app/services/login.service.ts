@@ -33,6 +33,7 @@ export class LoginService {
     this.http.post<any>(url, body, httpOptions).subscribe(result => {
       this.authService.storeSessionId(result.data);
       this.router.navigate(['/account']);
+      location.reload();
     }, error => {
       alert(error.error.data);
     });

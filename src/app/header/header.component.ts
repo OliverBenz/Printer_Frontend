@@ -33,7 +33,6 @@ export class HeaderComponent implements OnInit {
     }
     else if(this.page.searchInput == "visible"){
       this.page.searchInput = "hidden";
-
     }
   }
 
@@ -42,6 +41,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["/index"]);
     
     this.checkLogin();
+    location.reload();
   }
   public handleFiles(event){
     this.helpersService.fileSource.next(<File>event.target.files[0]);

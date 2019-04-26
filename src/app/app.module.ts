@@ -18,6 +18,7 @@ import { StreamComponent } from './stream/stream.component';
 import { AccprintsComponent } from './account/accprints/accprints.component';
 
 import { FormsModule } from '@angular/forms';
+// import { CommonModule } from '@angular/common';
 import { LoginSiteComponent } from './login-site/login-site.component';
 import { RegisterComponent } from './login-site/register/register.component';
 import { AdminComponent } from './admin/admin.component';

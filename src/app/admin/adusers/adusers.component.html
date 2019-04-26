@@ -17,7 +17,7 @@
     <!-- Content Right -->
     <div class="w3-col s6 m6 l4 right">
       <select #uGroup id="userStatus" (change)="changeGroup(u.getId(), uGroup.value)">
-        <option *ngFor="let g of groups" value="{{ g[0] }}">{{ g[1] }}</option>
+        <option *ngFor="let g of groups" value="{{ g[1] }}">{{ g[1] }}</option>
       </select>
     </div>
   </div>
