@@ -16,6 +16,8 @@ export class AdusersComponent implements OnInit {
     [2, "Maintainer"],
     [3, "Administrator"]
   ];
+
+  public value: string = ""
   constructor(
     private printsService: PrintsService
   ) { }
@@ -51,12 +53,20 @@ export class AdusersComponent implements OnInit {
         this.users.splice(i, 1);
       }
     }
+
+    // TODO: Implement change Usergroup in frontend & backend
   }
   
   public toggleCollapse(id){
     for(let i = 0; i < this.show.length; i++){
       if(this.show[i][0] == id){
         this.show[i][1] = !this.show[i][1];
+
+        if(this.show[i][1] == true){
+          // FIXME: Race condition??
+          this.value = (<HTMLSelectElement>document.getElementById("group")).value;
+          console.log(this.value);
+        }
       } 
     }
   }
